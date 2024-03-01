@@ -4,4 +4,4 @@ The Service Interfaces Layer is a component of the [foundation](https://github.c
 
 ## Notes
 
-Rename `_service_interfaces@foundation` to `_service_interfaces` before using it in your project.
+Rename `_service_interfaces-foundation` to `_service_interfaces` before using it in your project.
