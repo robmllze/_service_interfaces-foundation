@@ -94,7 +94,8 @@ class ServiceEnvironment<
   //
   //
 
-  static const CURRENT_SERVICE_ENVIRONMENT = String.fromEnvironment("SERVICE_ENVIRONMENT");
+  static const CURRENT_SERVICE_ENVIRONMENT =
+      String.fromEnvironment("SERVICE_ENVIRONMENT");
 
   static ServiceEnvironmentType get currentServiceEnvironment {
     return ServiceEnvironmentType.values.valueOf(CURRENT_SERVICE_ENVIRONMENT) ??

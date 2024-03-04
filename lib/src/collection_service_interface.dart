@@ -50,7 +50,8 @@ abstract class CollectionServiceInterface<T extends Model>
         .serviceEnvironment
         .databaseServiceBroker
         .streamModelCollection(this.databaseRef(), limit: this.limit);
-    final models = data.map((e) => e.map((e) => letAs<T>(this.fromJson(e?.data ?? {}))).nonNulls);
+    final models = data.map(
+        (e) => e.map((e) => letAs<T>(this.fromJson(e?.data ?? {}))).nonNulls);
     return models;
   }
 }
