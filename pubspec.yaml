@@ -10,8 +10,6 @@
 ## ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ##.title~
 
-
-
 name: _service_interfaces
 publish_to: none
 
@@ -32,7 +30,7 @@ dependencies:
     path: ../_data
 
   xyz_pod: ^0.19.0
-  xyz_utils: ^0.36.0
+  xyz_utils: ^0.37.0
     
   http: any
 
