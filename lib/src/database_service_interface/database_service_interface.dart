@@ -1,12 +1,12 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// X|Y|Z & Dev 
+// X|Y|Z & Dev
 //
 // Copyright Ⓒ Robert Mollentze, xyzand.dev
-// 
+//
 // Licensing details can be found in the LICENSE file in the root directory.
-// 
+//
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
@@ -105,14 +105,14 @@ abstract class DatabaseServiceInterface<TModel extends Model> {
   //
   //
 
-  /// Streams a single document from the database.
+  /// Streams a single model from the database.
   ///
   /// ### Parameters:
   ///
   /// - `ref`: The reference to the document or table where the model should
   /// be streamed.
   /// - `onUpdate`: A callback function to be invoked when the model changes.
-  Stream<GenericModel?> streamModelData(
+  Stream<GenericModel?> streamModel(
     DataRef ref, [
     Future<void> Function(GenericModel?)? onUpdate,
   ]);
@@ -121,13 +121,13 @@ abstract class DatabaseServiceInterface<TModel extends Model> {
   //
   //
 
-  /// Streams a collection of documents from the database.
+  /// Streams a collection of model from the database.
   ///
   /// - `ref`: The reference to the collection or table where the collection
   /// should be streamed.
   /// - `onUpdate` A callback function to be invoked when the collection changes.
-  /// - `limit` The maximum number of documents to be streamed.
-  Stream<Iterable<GenericModel?>> streamModelDataCollection(
+  /// - `limit` The maximum number of model to be streamed.
+  Stream<Iterable<GenericModel?>> streamModelCollection(
     DataRef ref, {
     Future<void> Function(Iterable<GenericModel?>)? onUpdate,
     int limit = 1000,
