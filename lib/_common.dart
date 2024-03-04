@@ -16,5 +16,5 @@ export 'package:xyz_utils/xyz_utils.dart';
 
 export 'package:_data/lib.dart';
 
-export 'src/all_src.g.dart';
-export 'functions_src/all_functions_src.g.dart';
+export 'src/_all_src.g.dart';
+export 'functions_src/_all_functions_src.g.dart';
