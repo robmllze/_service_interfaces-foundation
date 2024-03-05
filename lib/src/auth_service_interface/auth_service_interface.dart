@@ -36,12 +36,6 @@ abstract class AuthServiceInterface {
   //
   //
 
-  Future<bool> checkPersistency();
-
-  //
-  //
-  //
-
   Future<void> logInWithEmailAndPassword({
     required String email,
     required String password,
