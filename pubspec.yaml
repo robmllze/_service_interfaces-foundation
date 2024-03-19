@@ -30,7 +30,7 @@ dependencies:
     path: ../_data
 
   xyz_pod: ^0.20.0
-  xyz_utils: ^0.46.0
+  xyz_utils: ^0.47.0
     
   http: any
 
