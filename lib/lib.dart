@@ -12,5 +12,5 @@
 
 library;
 
-export 'src/_all_src.g.dart';
-export 'functions_src/_all_functions_src.g.dart';
+export "src/_all_src.g.dart";
+export "functions_src/_all_functions_src.g.dart";
