@@ -1,16 +1,16 @@
 //.title
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// X|Y|Z & Dev 
+// 🇽🇾🇿 & Dev
 //
 // Copyright Ⓒ Robert Mollentze, xyzand.dev
-// 
+//
 // Licensing details can be found in the LICENSE file in the root directory.
-// 
+//
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import "/_common.dart";
+import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
@@ -51,7 +51,7 @@ class ServiceEnvironment<
   TAuthServiceInterface get authServiceBroker {
     if (this._authServiceBroker == null) {
       throw UnimplementedError(
-        "AuthServiceBroker is not available in the current environment.",
+        'AuthServiceBroker is not available in the current environment.',
       );
     }
     return this._authServiceBroker!;
@@ -60,7 +60,7 @@ class ServiceEnvironment<
   TDatabaseServiceInterface get databaseServiceBroker {
     if (this._databaseServiceBroker == null) {
       throw UnimplementedError(
-        "DatabaseServiceBroker is not available in the current environment.",
+        'DatabaseServiceBroker is not available in the current environment.',
       );
     }
     return this._databaseServiceBroker!;
@@ -69,7 +69,7 @@ class ServiceEnvironment<
   TDatabaseQueryInterface get databaseQueryBroker {
     if (this._databaseQueryBroker == null) {
       throw UnimplementedError(
-        "DatabaseQueryBroker is not available in the current environment.",
+        'DatabaseQueryBroker is not available in the current environment.',
       );
     }
     return this._databaseQueryBroker!;
@@ -78,7 +78,7 @@ class ServiceEnvironment<
   TFunctionsServiceInterface get functionsServiceBroker {
     if (this._functionsServiceBroker == null) {
       throw UnimplementedError(
-        "FunctionsServiceBroker is not available in the current environment.",
+        'FunctionsServiceBroker is not available in the current environment.',
       );
     }
     return this._functionsServiceBroker!;
@@ -94,8 +94,7 @@ class ServiceEnvironment<
   //
   //
 
-  static const CURRENT_SERVICE_ENVIRONMENT =
-      String.fromEnvironment("SERVICE_ENVIRONMENT");
+  static const CURRENT_SERVICE_ENVIRONMENT = String.fromEnvironment('SERVICE_ENVIRONMENT');
 
   static ServiceEnvironmentType get currentServiceEnvironment {
     return ServiceEnvironmentType.values.valueOf(CURRENT_SERVICE_ENVIRONMENT) ??
