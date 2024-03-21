@@ -29,8 +29,8 @@ dependencies:
   _data:
     path: ../_data
 
-  xyz_pod: ^0.21.0
-  xyz_utils: ^0.48.2
+  xyz_pod: ^0.23.0
+  xyz_utils: ^0.51.0
     
   http: any
 
