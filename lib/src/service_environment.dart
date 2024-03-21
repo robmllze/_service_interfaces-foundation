@@ -54,7 +54,7 @@ class ServiceEnvironment<
         'AuthServiceBroker is not available in the current environment.',
       );
     }
-    return this._authServiceBroker!;
+    return this._authServiceBroker;
   }
 
   TDatabaseServiceInterface get databaseServiceBroker {
@@ -63,7 +63,7 @@ class ServiceEnvironment<
         'DatabaseServiceBroker is not available in the current environment.',
       );
     }
-    return this._databaseServiceBroker!;
+    return this._databaseServiceBroker;
   }
 
   TDatabaseQueryInterface get databaseQueryBroker {
@@ -72,7 +72,7 @@ class ServiceEnvironment<
         'DatabaseQueryBroker is not available in the current environment.',
       );
     }
-    return this._databaseQueryBroker!;
+    return this._databaseQueryBroker;
   }
 
   TFunctionsServiceInterface get functionsServiceBroker {
@@ -81,7 +81,7 @@ class ServiceEnvironment<
         'FunctionsServiceBroker is not available in the current environment.',
       );
     }
-    return this._functionsServiceBroker!;
+    return this._functionsServiceBroker;
   }
 
   //
