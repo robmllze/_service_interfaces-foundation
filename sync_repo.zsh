@@ -11,6 +11,7 @@
 ##.title~
 
 # Sync this folder with https://github.com/robmllze/_service_interfaces-foundation.
+# You can change 'main' to another branch if necessary.
 cd _service_interfaces
 git init
 git add .
