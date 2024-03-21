@@ -14,7 +14,8 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class DocumentServiceInterface<T extends Model> extends ModelServiceInterface<T> {
+abstract class DocumentServiceInterface<T extends Model>
+    extends ModelServiceInterface<T> {
   //
   //
   //
