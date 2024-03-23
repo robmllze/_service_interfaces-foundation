@@ -48,6 +48,6 @@ class UserInterface {
   //
 
   String get userPubId {
-    return IdUtils.mapUserIdToPubId(userId: userId);
+    return IdUtils.toUserPubId(userId: userId);
   }
 }
