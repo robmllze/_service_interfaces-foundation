@@ -29,6 +29,15 @@ abstract class DatabaseQueryInterface {
   //
   //
 
+  // Future<ModelUserPub?> queryUserByEmail({
+  //   required DatabaseServiceInterface databaseService,
+  //   required String email,
+  // });
+
+  //
+  //
+  //
+
   Stream<Iterable<ModelUserPub>> queryUserPubsById({
     required DatabaseServiceInterface databaseService,
     required Set<String> userpubIds,
