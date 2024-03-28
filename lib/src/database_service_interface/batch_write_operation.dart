@@ -12,7 +12,7 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class BatchWriteOperation<TModel> {
+class BatchWriteOperation<TModel extends Model> {
   //
   //
   //
