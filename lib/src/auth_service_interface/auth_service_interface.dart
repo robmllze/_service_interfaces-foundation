@@ -75,13 +75,19 @@ abstract class AuthServiceInterface {
   //
   //
 
+  Future<String?> getIdToken();
+
+  //
+  //
+  //
+
+  Future<void> deleteUser();
+
+  //
+  //
+  //
+
   void dispose() {
     this.pCurrentUser.dispose();
   }
-
-  //
-  //
-  //
-
-  Future<String?> getIdToken();
 }

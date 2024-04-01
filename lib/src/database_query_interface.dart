@@ -20,7 +20,7 @@ abstract class DatabaseQueryInterface {
   //
 
   Future<Iterable<ModelUserPub>> queryUserPubsByNameOrEmail({
-    required DatabaseServiceInterface databaseService,
+    required DatabaseServiceInterface databaseServiceBroker,
     required String nameOrEmailQuery,
     int limit = 10,
   });
@@ -30,7 +30,7 @@ abstract class DatabaseQueryInterface {
   //
 
   // Future<ModelUserPub?> queryUserByEmail({
-  //   required DatabaseServiceInterface databaseService,
+  //   required DatabaseServiceInterface databaseServiceBroker,
   //   required String email,
   // });
 
@@ -39,7 +39,7 @@ abstract class DatabaseQueryInterface {
   //
 
   Stream<Iterable<ModelUserPub>> queryUserPubsById({
-    required DatabaseServiceInterface databaseService,
+    required DatabaseServiceInterface databaseServiceBroker,
     required Set<String> userpubIds,
     int limit = 1000,
   });
@@ -49,7 +49,7 @@ abstract class DatabaseQueryInterface {
   //
 
   Stream<Iterable<ModelRelationship>> queryRelationshipsForMembers({
-    required DatabaseServiceInterface databaseService,
+    required DatabaseServiceInterface databaseServiceBroker,
     required Set<String> memberIds,
     int limit = 1000,
   });
@@ -60,7 +60,7 @@ abstract class DatabaseQueryInterface {
 
   @visibleForTesting
   Future<void> deleteCollectionTest({
-    required DatabaseServiceInterface<Model> databaseService,
+    required DatabaseServiceInterface<Model> databaseServiceBroker,
     required DataRef collectionRef,
   });
 }
