@@ -29,10 +29,29 @@ abstract class DatabaseQueryInterface {
   //
   //
 
-  // Future<ModelUserPub?> queryUserByEmail({
-  //   required DatabaseServiceInterface databaseServiceBroker,
-  //   required String email,
-  // });
+  Stream<Iterable<ModelUserPub>> queryUserPubsByEmail({
+    required DatabaseServiceInterface databaseServiceBroker,
+    required Set<String> emails,
+    int limit = 1000,
+  });
+
+  //
+  //
+  //
+
+  Future<ModelUserPub?> queryUserPubByEmail({
+    required DatabaseServiceInterface databaseServiceBroker,
+    required String email,
+  }) async {
+    final stream = this.queryUserPubsByEmail(
+      databaseServiceBroker: databaseServiceBroker,
+      emails: {email},
+      limit: 1,
+    );
+    final first = await (stream.first);
+    final result = first.firstOrNull;
+    return result;
+  }
 
   //
   //
@@ -40,7 +59,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelUserPub>> queryUserPubsById({
     required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> userpubIds,
+    required Set<String> pubIds,
     int limit = 1000,
   });
 
@@ -58,9 +77,13 @@ abstract class DatabaseQueryInterface {
   //
   //
 
+  /// Deletes a collection from the database using a lazy method, not intended
+  /// for production use.
   @visibleForTesting
-  Future<void> deleteCollectionTest({
-    required DatabaseServiceInterface<Model> databaseServiceBroker,
+  Future<void> lazyDeleteCollection({
+    required DatabaseServiceInterface databaseServiceBroker,
     required DataRef collectionRef,
-  });
+  }) {
+    throw UnimplementedError();
+  }
 }
