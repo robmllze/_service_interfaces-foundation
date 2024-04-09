@@ -59,7 +59,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelUserPub>> queryUserPubsById({
     required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> pubIds,
+    required Set<String> pids,
     int limit = 1000,
   });
 
@@ -69,7 +69,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelRelationship>> queryRelationshipsForMembers({
     required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> memberIds,
+    required Set<String> memberPids,
     int limit = 1000,
   });
 

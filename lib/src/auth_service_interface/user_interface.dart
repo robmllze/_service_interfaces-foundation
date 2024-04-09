@@ -47,7 +47,7 @@ class UserInterface {
   //
   //
 
-  String get userPubId {
-    return IdUtils.toUserPubId(userId: userId);
+  String get userPid {
+    return IdUtils.toUserPid(userId: userId);
   }
 }
