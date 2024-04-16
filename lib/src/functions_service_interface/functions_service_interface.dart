@@ -49,4 +49,29 @@ abstract class FunctionsServiceInterface {
     );
     return success;
   }
+
+  //
+  //
+  //
+
+  Future<bool> sendEmailsViaSendgrid({
+    required String apiKey,
+    required String fromEmail,
+    required String fromName,
+    required List<String> toEmails,
+    required String templateId,
+    required Map dynamicTemplateData,
+  }) async {
+    final (_, success) = await callSendEmailsViaSendGridFunction(
+      functionsInterface: this,
+      authServiceBroker: authServiceBroker,
+      apiKey: apiKey,
+      fromEmail: fromEmail,
+      fromName: fromName,
+      toEmails: toEmails,
+      templateId: templateId,
+      dynamicTemplateData: dynamicTemplateData,
+    );
+    return success;
+  }
 }
