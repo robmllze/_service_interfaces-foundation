@@ -62,7 +62,7 @@ abstract class FunctionsServiceInterface {
     required String templateId,
     required Map dynamicTemplateData,
   }) async {
-    final (_, success) = await callSendEmailsViaSendGridFunction(
+    final (response, success) = await callSendEmailsViaSendGridFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,
       apiKey: apiKey,
@@ -72,6 +72,7 @@ abstract class FunctionsServiceInterface {
       templateId: templateId,
       dynamicTemplateData: dynamicTemplateData,
     );
+    print(response);
     return success;
   }
 }
