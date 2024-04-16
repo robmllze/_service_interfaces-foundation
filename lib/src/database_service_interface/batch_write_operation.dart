@@ -8,11 +8,13 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+import 'package:equatable/equatable.dart';
+
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class BatchWriteOperation<TModel extends Model> {
+class BatchWriteOperation<TModel extends Model> extends Equatable {
   //
   //
   //
@@ -27,11 +29,24 @@ class BatchWriteOperation<TModel extends Model> {
   //
   //
 
-  BatchWriteOperation(
+  const BatchWriteOperation(
     this.ref, {
     this.model,
     this.delete = false,
     this.mergeExisting = true,
     this.overwriteExisting = true,
   });
+
+  //
+  //
+  //
+
+  @override
+  List<Object?> get props => [
+        ref,
+        model,
+        delete,
+        mergeExisting,
+        overwriteExisting,
+      ];
 }
