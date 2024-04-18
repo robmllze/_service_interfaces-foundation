@@ -67,7 +67,17 @@ abstract class DatabaseQueryInterface {
   //
   //
 
-  Stream<Iterable<ModelRelationship>> queryRelationshipsForMembers({
+  Stream<Iterable<ModelRelationship>> queryRelationshipsForAnyMembers({
+    required DatabaseServiceInterface databaseServiceBroker,
+    required Set<String> memberPids,
+    int limit = 1000,
+  });
+
+  //
+  //
+  //
+
+  Stream<Iterable<ModelRelationship>> queryRelationshipsForAllMembers({
     required DatabaseServiceInterface databaseServiceBroker,
     required Set<String> memberPids,
     int limit = 1000,
