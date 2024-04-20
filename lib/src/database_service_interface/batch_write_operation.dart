@@ -41,6 +41,13 @@ class BatchWriteOperation<TModel extends Model> extends Equatable {
   //
   //
 
+  Future<void> write(DatabaseServiceInterface databaseServiceBroker) =>
+      [this].batchWrite(databaseServiceBroker);
+
+  //
+  //
+  //
+
   @override
   List<Object?> get props => [
         ref,
@@ -49,4 +56,15 @@ class BatchWriteOperation<TModel extends Model> extends Equatable {
         mergeExisting,
         overwriteExisting,
       ];
+}
+
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+extension BatchWriteOnBatchWriteOperationIterable on Iterable<BatchWriteOperation> {
+  //
+  //
+  //
+
+  Future<void> batchWrite(DatabaseServiceInterface databaseServiceBroker) =>
+      databaseServiceBroker.batchWrite(this);
 }
