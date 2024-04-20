@@ -56,7 +56,7 @@ abstract class ModelServiceInterface<T> {
   //
 
   Future<void> initService() async {
-    this.cancelSubscriptions();
+    this.cancelSubscription();
     this.subscription = this.stream().listen((e) async {
       await this.pValue.set(e);
       if (this.completer.isCompleted == false) {
@@ -76,7 +76,7 @@ abstract class ModelServiceInterface<T> {
   //
   //
 
-  void cancelSubscriptions() {
+  void cancelSubscription() {
     this.subscription?.cancel();
   }
 
@@ -85,7 +85,7 @@ abstract class ModelServiceInterface<T> {
   //
 
   void dispose() {
-    this.cancelSubscriptions();
+    this.cancelSubscription();
     this.pValue.dispose();
   }
 }
