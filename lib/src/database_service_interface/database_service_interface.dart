@@ -12,21 +12,51 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class DatabaseServiceInterface<TModel extends Model> {
+abstract class DatabaseServiceInterface {
   //
   //
   //
 
-  /// Sets a model on the database.
+  /// Creates a model on the database.
   ///
   /// ### Parameters:
   ///
   /// - `model` is the model data to be set.
   /// - `ref` is the reference to the document or table where the model should be set.
-  Future<void> setModel(
-    TModel model,
+  Future<void> createModel(
+    Model model,
     DataRef ref,
   );
+
+  //
+  //
+  //
+
+  /// Creates or updates (sets) a model on the database.
+  ///
+  /// ### Parameters:
+  ///
+  /// - `model` is the model data to be set.
+  /// - `ref` is the reference to the document or table where the model should be set.
+  Future<void> createOrUpdateModel(
+    Model model,
+    DataRef ref,
+  );
+
+  //
+  //
+  //
+
+  /// Reads a model from the database.
+  ///
+  /// ### Parameters:
+  ///
+  /// - `ref`: The reference to the document or table where the model should
+  /// be retrieved.
+  Future<TModel?> readModel<TModel extends Model>(
+    DataRef ref, [
+    TModel? Function(Model? model)? convert,
+  ]);
 
   //
   //
@@ -45,21 +75,9 @@ abstract class DatabaseServiceInterface<TModel extends Model> {
   /// When overriding, ensure this method throws an error if the model does
   /// not exist!
   Future<void> updateModel(
-    TModel model,
+    Model model,
     DataRef ref,
   );
-
-  //
-  //
-  //
-
-  /// Retrieves a model from the database.
-  ///
-  /// ### Parameters:
-  ///
-  /// - `ref`: The reference to the document or table where the model should
-  /// be retrieved.
-  Future<GenericModel?> getModel(DataRef ref);
 
   //
   //
@@ -90,13 +108,13 @@ abstract class DatabaseServiceInterface<TModel extends Model> {
   //
   //
 
-  /// Performs a batch write operation in the database.
+  /// Performs a series of batch operations on the database.
   ///
   /// ### Parameters:
   ///
-  /// - `writes`: A list of write operations to be executed in a batch.
-  Future<void> batchWrite(
-    Iterable<BatchWriteOperation<TModel>> writes,
+  /// - `writes`: A list of batch operations to execute.
+  Future<Iterable<Model?>> runBatchOperations(
+    Iterable<BatchOperation> operations,
   );
 
   //

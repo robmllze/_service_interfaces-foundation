@@ -90,7 +90,7 @@ abstract class DatabaseQueryInterface {
   /// Deletes a collection from the database using a lazy method, not intended
   /// for production use.
   @visibleForTesting
-  Future<Iterable<BatchWriteOperation>> getLazyDeleteCollectionOperations({
+  Future<Iterable<BatchOperation>> getLazyDeleteCollectionOperations({
     required DatabaseServiceInterface databaseServiceBroker,
     required DataRef collectionRef,
   }) {
