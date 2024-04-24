@@ -8,6 +8,8 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+import 'package:xyz_pod/_common.dart';
+
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -100,9 +102,16 @@ abstract class DatabaseServiceInterface {
   /// ### Parameters:
   ///
   /// - `transactionHandler`: A function that handles the transaction logic.
+  ///
+  /// Note: Firestore is currently the only known service that supports this
+  /// feature. This function could be creatively adapted to simulate similar
+  /// behavior with other services. Use this for testing or prototyping only.
+  @visibleForTesting
   Future<void> runTransaction(
-    Future<void> Function(dynamic) transactionHandler,
-  );
+    Future<void> Function(dynamic transaction) transactionHandler,
+  ) {
+    throw UnsupportedError('Only Firestore supports this feature.');
+  }
 
   //
   //
@@ -113,9 +122,16 @@ abstract class DatabaseServiceInterface {
   /// ### Parameters:
   ///
   /// - `writes`: A list of batch operations to execute.
+  ///
+  /// Note: Firestore is currently the only known service that supports this
+  /// feature. This function could be creatively adapted to simulate similar
+  /// behavior with other services. Use this for testing or prototyping only.
+  @visibleForTesting
   Future<Iterable<Model?>> runBatchOperations(
     Iterable<BatchOperation> operations,
-  );
+  ) {
+    throw UnsupportedError('Only Firestore supports this feature.');
+  }
 
   //
   //
@@ -128,10 +144,17 @@ abstract class DatabaseServiceInterface {
   /// - `ref`: The reference to the document or table where the model should
   /// be streamed.
   /// - `onUpdate`: A callback function to be invoked when the model changes.
+  ///
+  /// Note: Firestore is currently the only known service that supports this
+  /// feature. This function could be creatively adapted to simulate similar
+  /// behavior with other services. Use this for testing or prototyping only.
+  @visibleForTesting
   Stream<GenericModel?> streamModel(
     DataRef ref, [
-    Future<void> Function(GenericModel?)? onUpdate,
-  ]);
+    Future<void> Function(GenericModel? model)? onUpdate,
+  ]) {
+    throw UnsupportedError('Only Firestore supports this feature.');
+  }
 
   //
   //
@@ -143,9 +166,85 @@ abstract class DatabaseServiceInterface {
   /// should be streamed.
   /// - `onUpdate` A callback function to be invoked when the collection changes.
   /// - `limit` The maximum number of model to be streamed.
+  ///
+  /// Note: Firestore is currently the only known service that supports this
+  /// feature. This function could be creatively adapted to simulate similar
+  /// behavior with other services. Use this for testing or prototyping only.
+  @visibleForTesting
   Stream<Iterable<GenericModel?>> streamModelCollection(
     DataRef ref, {
-    Future<void> Function(Iterable<GenericModel?>)? onUpdate,
+    Future<void> Function(Iterable<GenericModel?> model)? onUpdate,
     int limit = 1000,
-  });
+  }) {
+    throw UnsupportedError('Only Firestore supports this feature.');
+  }
+
+  //
+  //
+  //
+
+  /// A value to be set on a model field that would delete the field.
+  ///
+  /// Note: Firestore is currently the only known service that supports this
+  /// feature. This function could be creatively adapted to simulate similar
+  /// behavior with other services. Use this for testing or prototyping only.
+  @visibleForTesting
+  dynamic deleteFieldValue() {
+    throw UnsupportedError('Only Firestore supports this feature.');
+  }
+
+  //
+  //
+  //
+
+  /// A value to be set on a model field that would increment the field.
+  ///
+  /// Note: Firestore is currently the only known service that supports this
+  /// feature. This function could be creatively adapted to simulate similar
+  /// behavior with other services. Use this for testing or prototyping only.
+  @visibleForTesting
+  dynamic incremementFieldValue([int i = 1]) {
+    throw UnsupportedError('Only Firestore supports this feature.');
+  }
+
+  //
+  //
+  //
+
+  /// A value to be set on a model field that would decrement the field.
+  ///
+  /// Note: Firestore is currently the only known service that supports this
+  /// feature. This function could be creatively adapted to simulate similar
+  /// behavior with other services. Use this for testing or prototyping only.
+  @visibleForTesting
+  dynamic decrementFieldValue([int i = 1]) {
+    throw UnsupportedError('Only Firestore supports this feature.');
+  }
+  //
+  //
+  //
+
+  /// A value to be set on a model field that would add elements to a list field.
+  ///
+  /// Note: Firestore is currently the only known service that supports this
+  /// feature. This function could be creatively adapted to simulate similar
+  /// behavior with other services. Use this for testing or prototyping only.
+  @visibleForTesting
+  dynamic arrayUnionFieldValue(List elementsToAdd) {
+    throw UnsupportedError('Only Firestore supports this feature.');
+  }
+
+  //
+  //
+  //
+
+  /// A value to be set on a model field that would remove elements from a list field.
+  ///
+  /// Note: Firestore is currently the only known service that supports this
+  /// feature. This function could be creatively adapted to simulate similar
+  /// behavior with other services. Use this for testing or prototyping only.
+  @visibleForTesting
+  dynamic arrayRemoveFieldValue(List elementsToRemove) {
+    throw UnsupportedError('Only Firestore supports this feature.');
+  }
 }
