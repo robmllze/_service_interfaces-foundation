@@ -48,6 +48,6 @@ class UserInterface {
   //
 
   String get userPid {
-    return IdUtils.toUserPid(userId: userId);
+    return IdUtility(seed: userId).idToUserPid(userId: userId);
   }
 }
