@@ -86,7 +86,7 @@ class ServiceEnvironment<
   //
   //
 
-  UserInterface? get currentUser => this.authServiceBroker.pCurrentUser.value;
+  AuthUser? get currentUser => this.authServiceBroker.pCurrentUser.value;
 
   //
   //

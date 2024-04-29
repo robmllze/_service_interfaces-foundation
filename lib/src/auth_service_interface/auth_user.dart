@@ -8,11 +8,7 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import '/_common.dart';
-
-// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-
-class UserInterface {
+class AuthUser {
   //
   //
   //
@@ -27,7 +23,7 @@ class UserInterface {
   //
   //
 
-  const UserInterface({
+  const AuthUser({
     required this.userId,
     required this.email,
     this.displayName,
@@ -39,15 +35,5 @@ class UserInterface {
   //
   //
 
-  Uri? get photoURI {
-    return this.photoURL == null ? null : Uri.tryParse(this.photoURL!);
-  }
-
-  //
-  //
-  //
-
-  String get userPid {
-    return IdUtility(seed: userId).idToUserPid(userId: userId);
-  }
+  Uri? get photoURI => this.photoURL == null ? null : Uri.tryParse(this.photoURL!);
 }

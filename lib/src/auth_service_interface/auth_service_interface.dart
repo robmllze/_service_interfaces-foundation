@@ -17,8 +17,8 @@ abstract class AuthServiceInterface {
   //
   //
 
-  final pCurrentUser = Pod<UserInterface?>(null);
-  void Function(UserInterface)? onLogin;
+  final pCurrentUser = Pod<AuthUser?>(null);
+  void Function(AuthUser)? onLogin;
   void Function()? onLogout;
 
   //

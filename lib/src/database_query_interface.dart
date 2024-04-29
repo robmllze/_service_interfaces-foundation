@@ -29,10 +29,9 @@ abstract class DatabaseQueryInterface {
   //
   //
 
-  Stream<Iterable<ModelUserPub>> queryUserPubsByEmail({
+  Stream<Iterable<ModelUserPub>> streamUserPubsByEmail({
     required DatabaseServiceInterface databaseServiceBroker,
     required Set<String> emails,
-    int limit = 10,
   });
 
   //
@@ -43,10 +42,9 @@ abstract class DatabaseQueryInterface {
     required DatabaseServiceInterface databaseServiceBroker,
     required String email,
   }) async {
-    final stream = this.queryUserPubsByEmail(
+    final stream = this.streamUserPubsByEmail(
       databaseServiceBroker: databaseServiceBroker,
       emails: {email},
-      limit: 1,
     );
     final first = await (stream.first);
     final result = first.firstOrNull;
@@ -57,30 +55,29 @@ abstract class DatabaseQueryInterface {
   //
   //
 
-  Stream<Iterable<ModelUserPub>> queryUserPubsById({
+  Stream<Iterable<ModelUserPub>> streamUserPubsByPids({
     required DatabaseServiceInterface databaseServiceBroker,
     required Set<String> pids,
-    int limit = 10,
   });
 
   //
   //
   //
 
-  Stream<Iterable<ModelRelationship>> queryRelationshipsForAnyMembers({
+  Stream<Iterable<ModelRelationship>> streamRelationshipsForAnyMembers({
     required DatabaseServiceInterface databaseServiceBroker,
     required Set<String> memberPids,
-    int limit = 100,
+    int maxRelationshipsPerMember = 10,
   });
 
   //
   //
   //
 
-  Stream<Iterable<ModelRelationship>> queryRelationshipsForAllMembers({
+  Stream<Iterable<ModelRelationship>> streamRelationshipsForAllMembers({
     required DatabaseServiceInterface databaseServiceBroker,
     required Set<String> memberPids,
-    int limit = 100,
+    int maxRelationshipsPerMember = 10,
   });
 
   //
