@@ -19,37 +19,11 @@ abstract class DatabaseQueryInterface {
   //
   //
 
-  Future<Iterable<ModelUserPub>> queryUserPubsByNameOrEmail({
+  Stream<Iterable<ModelUserPub>> streamUserPubsByNameOrEmailQuery({
     required DatabaseServiceInterface databaseServiceBroker,
     required String nameOrEmailQuery,
     int limit = 10,
   });
-
-  //
-  //
-  //
-
-  Stream<Iterable<ModelUserPub>> streamUserPubsByEmail({
-    required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> emails,
-  });
-
-  //
-  //
-  //
-
-  Future<ModelUserPub?> queryUserPubByEmail({
-    required DatabaseServiceInterface databaseServiceBroker,
-    required String email,
-  }) async {
-    final stream = this.streamUserPubsByEmail(
-      databaseServiceBroker: databaseServiceBroker,
-      emails: {email},
-    );
-    final first = await (stream.first);
-    final result = first.firstOrNull;
-    return result;
-  }
 
   //
   //
@@ -64,10 +38,19 @@ abstract class DatabaseQueryInterface {
   //
   //
 
+  Stream<Iterable<ModelUserPub>> streamUserPubsByEmails({
+    required DatabaseServiceInterface databaseServiceBroker,
+    required Set<String> emails,
+  });
+
+  //
+  //
+  //
+
   Stream<Iterable<ModelRelationship>> streamRelationshipsForAnyMembers({
     required DatabaseServiceInterface databaseServiceBroker,
     required Set<String> memberPids,
-    int maxRelationshipsPerMember = 10,
+    int limit = 10,
   });
 
   //
@@ -77,19 +60,61 @@ abstract class DatabaseQueryInterface {
   Stream<Iterable<ModelRelationship>> streamRelationshipsForAllMembers({
     required DatabaseServiceInterface databaseServiceBroker,
     required Set<String> memberPids,
-    int maxRelationshipsPerMember = 10,
+    int limit = 10,
   });
 
   //
   //
   //
 
-  /// Deletes a collection from the database using a lazy method, not intended
-  /// for production use.
   @visibleForTesting
   Future<Iterable<BatchOperation>> getLazyDeleteCollectionOperations({
     required DatabaseServiceInterface databaseServiceBroker,
     required DataRef collectionRef,
+  }) {
+    throw UnimplementedError();
+  }
+
+  //
+  //
+  //
+
+  Stream<Iterable<ModelUser>> streamUsersByPids({
+    required DatabaseServiceInterface databaseServiceBroker,
+    required Set<String> pids,
+  }) {
+    throw UnimplementedError();
+  }
+
+  //
+  //
+  //
+
+  Stream<Iterable<ModelOrganization>> streamOrganizationsByPids({
+    required DatabaseServiceInterface databaseServiceBroker,
+    required Set<String> pids,
+  }) {
+    throw UnimplementedError();
+  }
+
+  //
+  //
+  //
+
+  Stream<Iterable<ModelProject>> streamProjectsByPids({
+    required DatabaseServiceInterface databaseServiceBroker,
+    required Set<String> pids,
+  }) {
+    throw UnimplementedError();
+  }
+
+  //
+  //
+  //
+
+  Stream<Iterable<ModelJob>> streamJobsByPids({
+    required DatabaseServiceInterface databaseServiceBroker,
+    required Set<String> pids,
   }) {
     throw UnimplementedError();
   }
