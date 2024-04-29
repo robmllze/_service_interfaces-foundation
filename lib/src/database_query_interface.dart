@@ -31,7 +31,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelUserPub>> streamUserPubsByPids({
     required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> pids,
+    required Iterable<String> pids,
   });
 
   //
@@ -40,7 +40,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelUserPub>> streamUserPubsByEmails({
     required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> emails,
+    required Iterable<String> emails,
   });
 
   //
@@ -49,7 +49,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelRelationship>> streamRelationshipsForAnyMembers({
     required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> memberPids,
+    required Iterable<String> pids,
     int limit = 10,
   });
 
@@ -59,7 +59,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelRelationship>> streamRelationshipsForAllMembers({
     required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> memberPids,
+    required Iterable<String> pids,
     int limit = 10,
   });
 
@@ -81,7 +81,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelUser>> streamUsersByPids({
     required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> pids,
+    required Iterable<String> pids,
   }) {
     throw UnimplementedError();
   }
@@ -92,7 +92,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelOrganization>> streamOrganizationsByPids({
     required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> pids,
+    required Iterable<String> pids,
   }) {
     throw UnimplementedError();
   }
@@ -103,7 +103,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelProject>> streamProjectsByPids({
     required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> pids,
+    required Iterable<String> pids,
   }) {
     throw UnimplementedError();
   }
@@ -114,7 +114,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelJob>> streamJobsByPids({
     required DatabaseServiceInterface databaseServiceBroker,
-    required Set<String> pids,
+    required Iterable<String> pids,
   }) {
     throw UnimplementedError();
   }
