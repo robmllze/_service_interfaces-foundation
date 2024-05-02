@@ -137,52 +137,6 @@ abstract class DatabaseServiceInterface {
   //
   //
 
-  /// Streams a single model from the database.
-  ///
-  /// ### Parameters:
-  ///
-  /// - `ref`: The reference to the document or table where the model should
-  /// be streamed.
-  /// - `onUpdate`: A callback function to be invoked when the model changes.
-  ///
-  /// Note: Firestore is currently the only known service that supports this
-  /// feature. This function could be creatively adapted to simulate similar
-  /// behavior with other services. Use this for testing or prototyping only.
-  @visibleForTesting
-  Stream<GenericModel?> streamModel(
-    DataRef ref, [
-    Future<void> Function(GenericModel? model)? onUpdate,
-  ]) {
-    throw UnsupportedError('Only Firestore supports this feature.');
-  }
-
-  //
-  //
-  //
-
-  /// Streams a collection of model from the database.
-  ///
-  /// - `ref`: The reference to the collection or table where the collection
-  /// should be streamed.
-  /// - `onUpdate` A callback function to be invoked when the collection changes.
-  /// - `limit` The maximum number of model to be streamed.
-  ///
-  /// Note: Firestore is currently the only known service that supports this
-  /// feature. This function could be creatively adapted to simulate similar
-  /// behavior with other services. Use this for testing or prototyping only.
-  @visibleForTesting
-  Stream<Iterable<GenericModel?>> streamModelCollection(
-    DataRef ref, {
-    Future<void> Function(Iterable<GenericModel?> model)? onUpdate,
-    int limit = 1000,
-  }) {
-    throw UnsupportedError('Only Firestore supports this feature.');
-  }
-
-  //
-  //
-  //
-
   /// A value to be set on a model field that would delete the field.
   ///
   /// Note: Firestore is currently the only known service that supports this

@@ -36,7 +36,7 @@ abstract class DocumentServiceInterface<T extends Model> extends ModelServiceInt
   Stream<T> stream() {
     return this
         .serviceEnvironment
-        .databaseServiceBroker
+        .databaseQueryBroker
         .streamModel(this.databaseRef())
         .map((e) => this.fromJson(e?.data ?? {}));
   }

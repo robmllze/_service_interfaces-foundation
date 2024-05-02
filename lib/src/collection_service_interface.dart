@@ -18,7 +18,7 @@ abstract class CollectionServiceInterface<T extends Model>
   //
   //
 
-  int streamLimit;
+  int? streamLimit;
   final DataRef ref;
 
   //
@@ -46,7 +46,7 @@ abstract class CollectionServiceInterface<T extends Model>
   Stream<Iterable<T>> stream() {
     final data = this
         .serviceEnvironment
-        .databaseServiceBroker
+        .databaseQueryBroker
         .streamModelCollection(this.databaseRef(), limit: this.streamLimit);
     final models = data.map(
       (e) => e.map((e) => letAs<T>(this.fromJson(e?.data ?? {}))).nonNulls,
