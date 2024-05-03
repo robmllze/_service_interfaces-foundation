@@ -14,7 +14,7 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-Future<(http.Response?, bool)> callDeleteCollectionFunction({
+Future<({http.Response? response, bool success})> callDeleteCollectionFunction({
   required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,
   required String collectionPath,
@@ -33,8 +33,8 @@ Future<(http.Response?, bool)> callDeleteCollectionFunction({
   );
 
   if (response.statusCode == 200) {
-    return (response, true);
+    return (response: response, success: true);
   } else {
-    return (response, false);
+    return (response: response, success: false);
   }
 }

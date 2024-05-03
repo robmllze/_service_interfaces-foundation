@@ -14,7 +14,7 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-Future<(http.Response?, bool)> callSendEmailsViaSendGridFunction({
+Future<({http.Response? response, bool success})> callSendEmailsViaSendGridFunction({
   required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,
   required String apiKey,
@@ -43,8 +43,8 @@ Future<(http.Response?, bool)> callSendEmailsViaSendGridFunction({
   );
 
   if (response.statusCode == 200) {
-    return (response, true);
+    return (response: response, success: true);
   } else {
-    return (response, false);
+    return (response: response, success: false);
   }
 }

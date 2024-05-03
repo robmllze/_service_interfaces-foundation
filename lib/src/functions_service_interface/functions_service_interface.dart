@@ -42,12 +42,12 @@ abstract class FunctionsServiceInterface {
   //
 
   Future<bool> deleteCollection(String collectionPath) async {
-    final (_, success) = await callDeleteCollectionFunction(
+    final result = await callDeleteCollectionFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,
       collectionPath: collectionPath,
     );
-    return success;
+    return result.success;
   }
 
   //
@@ -62,7 +62,7 @@ abstract class FunctionsServiceInterface {
     required String templateId,
     required Map dynamicTemplateData,
   }) async {
-    final (_, success) = await callSendEmailsViaSendGridFunction(
+    final result = await callSendEmailsViaSendGridFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,
       apiKey: apiKey,
@@ -72,6 +72,6 @@ abstract class FunctionsServiceInterface {
       templateId: templateId,
       dynamicTemplateData: dynamicTemplateData,
     );
-    return success;
+    return result.success;
   }
 }
