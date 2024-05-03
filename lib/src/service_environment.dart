@@ -16,7 +16,8 @@ class ServiceEnvironment<
     TAuthServiceInterface extends AuthServiceInterface,
     TDatabaseServiceInterface extends DatabaseServiceInterface,
     TDatabaseQueryInterface extends DatabaseQueryInterface,
-    TFunctionsServiceInterface extends FunctionsServiceInterface> {
+    TFunctionsServiceInterface extends FunctionsServiceInterface,
+    TFileServiceInterface extends FileServiceInterface> {
   //
   //
   //
@@ -25,6 +26,7 @@ class ServiceEnvironment<
   late final TDatabaseServiceInterface? _databaseServiceBroker;
   late final TDatabaseQueryInterface? _databaseQueryBroker;
   late final TFunctionsServiceInterface? _functionsServiceBroker;
+  late final TFileServiceInterface? _fileServiceBroker;
 
   //
   //
@@ -35,11 +37,13 @@ class ServiceEnvironment<
     TDatabaseServiceInterface? databaseServiceBroker,
     TDatabaseQueryInterface? databaseQueryBroker,
     TFunctionsServiceInterface? functionsServiceBroker,
+    TFileServiceInterface? fileServiceBroker,
   }) {
     this._authServiceBroker = authServiceBroker;
     this._databaseServiceBroker = databaseServiceBroker;
     this._databaseQueryBroker = databaseQueryBroker;
     this._functionsServiceBroker = functionsServiceBroker;
+    this._fileServiceBroker = fileServiceBroker;
   }
 
   //
@@ -49,7 +53,7 @@ class ServiceEnvironment<
   TAuthServiceInterface get authServiceBroker {
     if (this._authServiceBroker == null) {
       throw UnimplementedError(
-        'AuthServiceBroker is not available in the current environment.',
+        'authServiceBroker is not available in the current environment.',
       );
     }
     return this._authServiceBroker;
@@ -58,7 +62,7 @@ class ServiceEnvironment<
   TDatabaseServiceInterface get databaseServiceBroker {
     if (this._databaseServiceBroker == null) {
       throw UnimplementedError(
-        'DatabaseServiceBroker is not available in the current environment.',
+        'databaseServiceBroker is not available in the current environment.',
       );
     }
     return this._databaseServiceBroker;
@@ -67,7 +71,7 @@ class ServiceEnvironment<
   TDatabaseQueryInterface get databaseQueryBroker {
     if (this._databaseQueryBroker == null) {
       throw UnimplementedError(
-        'DatabaseQueryBroker is not available in the current environment.',
+        'databaseQueryBroker is not available in the current environment.',
       );
     }
     return this._databaseQueryBroker;
@@ -76,10 +80,19 @@ class ServiceEnvironment<
   TFunctionsServiceInterface get functionsServiceBroker {
     if (this._functionsServiceBroker == null) {
       throw UnimplementedError(
-        'FunctionsServiceBroker is not available in the current environment.',
+        'functionsServiceBroker is not available in the current environment.',
       );
     }
     return this._functionsServiceBroker;
+  }
+
+  TFileServiceInterface get fileServiceBroker {
+    if (this._fileServiceBroker == null) {
+      throw UnimplementedError(
+        'fileServiceBroker is not available in the current environment.',
+      );
+    }
+    return this._fileServiceBroker;
   }
 
   //

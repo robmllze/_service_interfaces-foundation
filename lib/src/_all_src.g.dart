@@ -20,6 +20,7 @@ export 'database_service_interface/batch_operations/read_operation copy.dart';
 export 'database_service_interface/batch_operations/update_operation.dart';
 export 'database_service_interface/database_service_interface.dart';
 export 'document_service_interface.dart';
+export 'file_service_interface/file_service_interface.dart';
 export 'functions_service_interface/functions_service_interface.dart';
 export 'model_service_interface.dart';
 export 'service_environment.dart';

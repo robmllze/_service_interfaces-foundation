@@ -159,7 +159,7 @@ abstract class DatabaseQueryInterface {
   //
   //
 
-  Stream<Iterable<ModelMediaEntry>> streamMediaByCreatorId({
+  Stream<Iterable<ModelFileEntry>> streamFileByCreatorId({
     required Set<String> createdByAny,
     int? limit,
   });
