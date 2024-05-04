@@ -31,11 +31,11 @@ abstract class FileServiceInterface {
   //
   //
 
-  Future<void> uploadFile(
-    DataRef ref,
-    Uint8List bytes, {
+  Future<void> uploadFile({
+    required DataRef ref,
+    required Uint8List bytes,
+    required String createdBy,
     List<String>? falsePath,
-    String? createdBy,
   });
 
   //
