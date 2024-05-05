@@ -32,6 +32,8 @@ dependencies:
   equatable: any
   http: any
 
+  file_picker: ^8.0.3
+
 ## -----------------------------------------------------------------------------
 
 dev_dependencies:

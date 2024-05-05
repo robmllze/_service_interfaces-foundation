@@ -10,6 +10,8 @@
 
 import 'dart:typed_data';
 
+import 'package:file_picker/file_picker.dart';
+
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -32,10 +34,10 @@ abstract class FileServiceInterface {
   //
 
   Future<void> uploadFile({
-    required DataRef ref,
-    required Uint8List bytes,
-    required String createdBy,
-    List<String>? falsePath,
+    required PlatformFile file,
+    String? createdBy,
+    String? title,
+    String? description,
   });
 
   //
