@@ -17,7 +17,8 @@ class ServiceEnvironment<
     TDatabaseServiceInterface extends DatabaseServiceInterface,
     TDatabaseQueryInterface extends DatabaseQueryInterface,
     TFunctionsServiceInterface extends FunctionsServiceInterface,
-    TFileServiceInterface extends FileServiceInterface> {
+    TFileServiceInterface extends FileServiceInterface,
+    TFieldValueInterface extends FieldValueInterface> {
   //
   //
   //
@@ -27,6 +28,7 @@ class ServiceEnvironment<
   late final TDatabaseQueryInterface? _databaseQueryBroker;
   late final TFunctionsServiceInterface? _functionsServiceBroker;
   late final TFileServiceInterface? _fileServiceBroker;
+  late final TFieldValueInterface? _fieldValueBroker;
 
   //
   //
@@ -38,12 +40,14 @@ class ServiceEnvironment<
     TDatabaseQueryInterface? databaseQueryBroker,
     TFunctionsServiceInterface? functionsServiceBroker,
     TFileServiceInterface? fileServiceBroker,
+    TFieldValueInterface? fieldValueBroker,
   }) {
     this._authServiceBroker = authServiceBroker;
     this._databaseServiceBroker = databaseServiceBroker;
     this._databaseQueryBroker = databaseQueryBroker;
     this._functionsServiceBroker = functionsServiceBroker;
     this._fileServiceBroker = fileServiceBroker;
+    this._fieldValueBroker = fieldValueBroker;
   }
 
   //
@@ -93,6 +97,15 @@ class ServiceEnvironment<
       );
     }
     return this._fileServiceBroker;
+  }
+
+  TFieldValueInterface get fieldValueBroker {
+    if (this._fieldValueBroker == null) {
+      throw UnimplementedError(
+        'fieldValueBroker is not available in the current environment.',
+      );
+    }
+    return this._fieldValueBroker;
   }
 
   //
