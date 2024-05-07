@@ -33,11 +33,15 @@ abstract class FileServiceInterface {
   //
   //
 
-  Future<void> uploadFile({
+  ({
+    ModelFileEntry pendingUploadFile,
+    Future<ModelFileEntry> uploadedFile,
+  }) uploadFile({
     required PlatformFile file,
     String? createdBy,
     String? title,
     String? description,
+    List<String>? definitionPath,
   });
 
   //
