@@ -54,7 +54,9 @@ abstract class DatabaseQueryInterface {
   Stream<Iterable<GenericModel?>> streamModelCollection(
     DataRef ref, {
     Future<void> Function(Iterable<GenericModel?> model)? onUpdate,
-    int? limit = 1000,
+    Object? ascendByField,
+    Object? descendByField,
+    int? limit,
   }) {
     throw UnsupportedError('Only Firestore supports this feature.');
   }
@@ -90,7 +92,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelRelationship>> streamRelationshipsForAnyMembers({
     required Iterable<String> pids,
-    int? limit = 10,
+    int? limit,
   });
 
   //
@@ -99,7 +101,7 @@ abstract class DatabaseQueryInterface {
 
   Stream<Iterable<ModelRelationship>> streamRelationshipsForAllMembers({
     required Iterable<String> pids,
-    int? limit = 10,
+    int? limit,
   });
 
   //

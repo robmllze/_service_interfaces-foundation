@@ -8,11 +8,13 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+// ignore_for_file: invalid_use_of_visible_for_testing_member
+
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class DocumentServiceInterface<T extends Model> extends ModelServiceInterface<T> {
+abstract class DocumentServiceInterface<T extends Model> extends DataServiceInterface<T> {
   //
   //
   //
@@ -32,8 +34,9 @@ abstract class DocumentServiceInterface<T extends Model> extends ModelServiceInt
   //
   //
 
+  @nonVirtual
   @override
-  Stream<T> stream() {
+  Stream<T> stream([int? limit]) {
     return this
         .serviceEnvironment
         .databaseQueryBroker

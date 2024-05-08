@@ -8,18 +8,26 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+// ignore_for_file: invalid_use_of_visible_for_testing_member
+
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 abstract class CollectionServiceInterface<T extends Model>
-    extends ModelServiceInterface<Iterable<T>> {
+    extends DataServiceInterface<Iterable<T>> {
   //
   //
   //
 
-  int? streamLimit;
+  /// The reference to the collection.
   final DataRef ref;
+
+  /// The results will be sorted in ascending order by this field.
+  final Object? ascendByField;
+
+  /// The results will be sorted in descending order by this field.
+  final Object? descendByField;
 
   //
   //
@@ -28,8 +36,15 @@ abstract class CollectionServiceInterface<T extends Model>
   CollectionServiceInterface({
     required super.serviceEnvironment,
     required this.ref,
-    required this.streamLimit,
-  });
+    this.ascendByField,
+    this.descendByField,
+    super.limit,
+  }) {
+    assert(
+      this.ascendByField == null || this.descendByField == null,
+      'ascendByField and descendByField cannot both be set.',
+    );
+  }
 
   //
   //
@@ -43,14 +58,32 @@ abstract class CollectionServiceInterface<T extends Model>
   //
 
   @override
-  Stream<Iterable<T>> stream() {
-    final data = this
-        .serviceEnvironment
-        .databaseQueryBroker
-        .streamModelCollection(this.databaseRef(), limit: this.streamLimit);
-    final models = data.map(
+  Stream<Iterable<T>> stream([int? limit]) {
+    final stream = this.serviceEnvironment.databaseQueryBroker.streamModelCollection(
+          this.databaseRef(),
+          ascendByField: this.ascendByField,
+          descendByField: this.descendByField,
+          limit: limit,
+        );
+    final models = stream.map(
       (e) => e.map((e) => letAs<T>(this.fromJson(e?.data ?? {}))).nonNulls,
     );
     return models;
+  }
+
+  //
+  //
+  //
+
+  /// Instantly adds a model to the collection, then writes the model to the
+  /// database.
+  Future<void> instantAdd(T model) async {
+    await super.pValue.update((e) => [...?e, model]);
+    final id = model.id!;
+    final modelRef = ref.copyWith(id: id);
+    /*do not await*/ this
+        .serviceEnvironment
+        .databaseServiceBroker
+        .createOrUpdateModel(model, modelRef);
   }
 }

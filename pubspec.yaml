@@ -25,12 +25,13 @@ dependencies:
   _data:
     path: ../_data
 
-  xyz_gen_annotations: ^0.30.2
+  xyz_gen_annotations: ^0.31.0
   xyz_pod: ^0.29.0
   xyz_utils: ^0.53.0
 
   equatable: any
   http: any
+  meta: any
 
   file_picker: ^8.0.3
 
