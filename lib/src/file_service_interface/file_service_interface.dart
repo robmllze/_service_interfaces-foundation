@@ -38,10 +38,22 @@ abstract class FileServiceInterface {
     Future<ModelFileEntry> uploadedFile,
   }) uploadFile({
     required PlatformFile file,
-    String? createdBy,
+    required String currentUserPid,
+    List<String> definitionPath = FileSchema.FILES,
     String? title,
     String? description,
-    List<String>? definitionPath,
+  });
+
+  //
+  //
+  //
+
+  ({
+    ModelFileEntry pendingUploadFile,
+    Future<ModelFileEntry> uploadedFile,
+  }) uploadAvatar({
+    required PlatformFile file,
+    required String currentUserPid,
   });
 
   //
@@ -49,4 +61,12 @@ abstract class FileServiceInterface {
   //
 
   Future<void> deleteFile(DataRef ref);
+
+  //
+  //
+  //
+
+  Future<void> deleteAvatar({
+    required String currentUserPid,
+  });
 }
