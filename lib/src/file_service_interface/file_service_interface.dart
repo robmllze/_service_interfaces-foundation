@@ -27,7 +27,13 @@ abstract class FileServiceInterface {
   //
   //
 
-  Future<(Uint8List, ModelFileEntry)?> downloadFile(DataRef ref);
+  Future<(Uint8List, ModelFileEntry)?> downloadFileFromRef(DataRef ref);
+
+  //
+  //
+  //
+
+  Future<Uint8List?> downloadFile(ModelFileEntry fileEntry);
 
   //
   //
