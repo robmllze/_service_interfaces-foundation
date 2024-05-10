@@ -70,17 +70,4 @@ abstract class CollectionServiceInterface<T extends Model>
     );
     return models;
   }
-
-  //
-  //
-  //
-
-  /// Instantly adds a model to the collection, then writes the model to the
-  /// database.
-  Future<void> instantAdd(T model) async {
-    await super.pValue.update((e) => [...?e, model]);
-    final id = model.id!;
-    final modelRef = ref.copyWith(id: id);
-    /*do not await*/ this.serviceEnvironment.databaseServiceBroker.setModel(model, modelRef);
-  }
 }
