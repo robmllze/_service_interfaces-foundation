@@ -72,7 +72,7 @@ abstract class DataServiceInterface<T> {
   /// completes when the first data element is streamed. It can be called
   /// multiple times to restart the service.
   @nonVirtual
-  Future<void> restartService({int? limit}) async {
+  Future<void> startService({int? limit}) async {
     final completer = Completer<T>();
     this.cancelSubscription();
     this.subscription = this.stream(this._setLimit(limit)).listen((e) async {
@@ -111,6 +111,6 @@ abstract class DataServiceInterface<T> {
 /// Starts [dataService] by calling `restartService` on it. This is just
 /// a helper function to make the code cleaner.
 Future<B> startService<A, B extends DataServiceInterface<A>>(B dataService) async {
-  await dataService.restartService();
+  await dataService.startService();
   return dataService;
 }
