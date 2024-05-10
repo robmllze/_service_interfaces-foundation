@@ -74,16 +74,11 @@ abstract class DatabaseQueryInterface {
   //
   //
 
-  Stream<Iterable<ModelUserPub>> streamUserPubsByPids({
-    required Iterable<String> pids,
-  });
-
-  //
-  //
-  //
-
-  Stream<Iterable<ModelUserPub>> streamUserPubsByEmails({
-    required Iterable<String> emails,
+  Stream<Iterable<T>> streamByWhereInElements<T>({
+    required Iterable<String> elements,
+    required DataRef collectionRef,
+    required T? Function(Map<String, dynamic>? otherData) fromJsonOrNull,
+    required Set<String> elementKeys,
   });
 
   //
@@ -120,7 +115,7 @@ abstract class DatabaseQueryInterface {
   //
 
   Stream<Iterable<ModelUser>> streamUsersByPids({
-    required Iterable<String> pids,
+    required Iterable<String> pids1,
   }) {
     throw UnimplementedError();
   }
@@ -130,7 +125,7 @@ abstract class DatabaseQueryInterface {
   //
 
   Stream<Iterable<ModelOrganization>> streamOrganizationsByPids({
-    required Iterable<String> pids,
+    required Iterable<String> pids1,
   }) {
     throw UnimplementedError();
   }
@@ -140,7 +135,7 @@ abstract class DatabaseQueryInterface {
   //
 
   Stream<Iterable<ModelProject>> streamProjectsByPids({
-    required Iterable<String> pids,
+    required Iterable<String> pids1,
   }) {
     throw UnimplementedError();
   }
@@ -150,7 +145,7 @@ abstract class DatabaseQueryInterface {
   //
 
   Stream<Iterable<ModelJob>> streamJobsByPids({
-    required Iterable<String> pids,
+    required Iterable<String> pids1,
   }) {
     throw UnimplementedError();
   }
