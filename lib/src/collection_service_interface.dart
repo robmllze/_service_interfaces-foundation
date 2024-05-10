@@ -81,9 +81,6 @@ abstract class CollectionServiceInterface<T extends Model>
     await super.pValue.update((e) => [...?e, model]);
     final id = model.id!;
     final modelRef = ref.copyWith(id: id);
-    /*do not await*/ this
-        .serviceEnvironment
-        .databaseServiceBroker
-        .createOrUpdateModel(model, modelRef);
+    /*do not await*/ this.serviceEnvironment.databaseServiceBroker.setModel(model, modelRef);
   }
 }

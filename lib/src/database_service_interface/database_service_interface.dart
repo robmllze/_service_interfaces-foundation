@@ -38,7 +38,7 @@ abstract class DatabaseServiceInterface {
   ///
   /// - `model` is the model data to be set.
   /// - `ref` is the reference to the document or table where the model should be set.
-  Future<void> createOrUpdateModel(
+  Future<void> setModel(
     Model model,
     DataRef ref,
   );

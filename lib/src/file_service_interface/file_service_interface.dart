@@ -51,9 +51,10 @@ abstract class FileServiceInterface {
   ({
     ModelFileEntry pendingUploadFile,
     Future<ModelFileEntry> uploadedFile,
-  }) uploadAvatar({
+  }) uploadPublicFile({
     required PlatformFile file,
-    required String currentUserPid,
+    required DataRef pubRef,
+    required String? fileId,
   });
 
   //
@@ -66,7 +67,8 @@ abstract class FileServiceInterface {
   //
   //
 
-  Future<void> deleteAvatar({
-    required String currentUserPid,
+  Future<void> deletePublicFile({
+    required DataRef pubRef,
+    required String fileId,
   });
 }
