@@ -81,6 +81,16 @@ abstract class AuthServiceInterface {
   //
   //
 
+  Future<void> updateUser({
+    String? displayName,
+    String? photoURL,
+    String? password,
+  });
+
+  //
+  //
+  //
+
   Future<void> deleteUser();
 
   //
