@@ -54,7 +54,6 @@ class BatchOperation<TModel extends Model> extends Equatable {
   //
 
   BatchOperation<TModel> copyWith({
-    DataRef? ref,
     TModel? model,
     bool? create,
     bool? read,
