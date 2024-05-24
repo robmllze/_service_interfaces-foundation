@@ -29,9 +29,9 @@ abstract class DatabaseQueryInterface {
   /// feature. This function could be creatively adapted to simulate similar
   /// behavior with other services. Use this for testing or prototyping only.
   @visibleForTesting
-  Stream<GenericModel?> streamModel(
+  Stream<DataModel?> streamModel(
     DataRef ref, [
-    Future<void> Function(GenericModel? model)? onUpdate,
+    Future<void> Function(DataModel? model)? onUpdate,
   ]) {
     throw UnsupportedError('Only Firestore supports this feature.');
   }
@@ -51,9 +51,9 @@ abstract class DatabaseQueryInterface {
   /// feature. This function could be creatively adapted to simulate similar
   /// behavior with other services. Use this for testing or prototyping only.
   @visibleForTesting
-  Stream<Iterable<GenericModel?>> streamModelCollection(
+  Stream<Iterable<DataModel?>> streamModelCollection(
     DataRef ref, {
-    Future<void> Function(Iterable<GenericModel?> model)? onUpdate,
+    Future<void> Function(Iterable<DataModel?> model)? onUpdate,
     Object? ascendByField,
     Object? descendByField,
     int? limit,

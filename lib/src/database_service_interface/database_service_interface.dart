@@ -22,11 +22,9 @@ abstract class DatabaseServiceInterface {
   /// ### Parameters:
   ///
   /// - `model` is the model data to be set.
-  /// - `ref` is the reference to the document or table where the model should be set.
-  Future<void> createModel(
-    Model model,
-    DataRef ref,
-  );
+  /// - `model.ref` is the reference to the document or table where the model
+  /// should be set.
+  Future<void> createModel(Model model);
 
   //
   //
@@ -37,11 +35,9 @@ abstract class DatabaseServiceInterface {
   /// ### Parameters:
   ///
   /// - `model` is the model data to be set.
-  /// - `ref` is the reference to the document or table where the model should be set.
-  Future<void> setModel(
-    Model model,
-    DataRef ref,
-  );
+  /// - `model.ref` is the reference to the document or table where the model
+  /// should be set.
+  Future<void> setModel(Model model);
 
   //
   //
@@ -67,17 +63,14 @@ abstract class DatabaseServiceInterface {
   /// ### Parameters:
   ///
   /// - `model`: The updated model.
-  /// - `ref`: The reference to the document or table where the model should
-  /// be updated.
+  /// - `model.ref`: The reference to the document or table where the model
+  /// should be updated.
   ///
   /// ### NB:
   ///
   /// When overriding, ensure this method throws an error if the model does
   /// not exist!
-  Future<void> updateModel(
-    Model model,
-    DataRef ref,
-  );
+  Future<void> updateModel(Model model);
 
   //
   //

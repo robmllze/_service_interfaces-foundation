@@ -14,7 +14,6 @@ import '/_common.dart';
 
 class CreateOrUpdateOperation<TModel extends Model> extends BatchOperation<TModel> {
   const CreateOrUpdateOperation({
-    super.ref,
     required super.model,
   }) : super(
           create: true,

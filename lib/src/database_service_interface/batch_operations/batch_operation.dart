@@ -17,7 +17,6 @@ class BatchOperation<TModel extends Model> extends Equatable {
   //
   //
 
-  final DataRef? ref;
   final TModel? model;
   final bool create;
   final bool read;
@@ -29,13 +28,26 @@ class BatchOperation<TModel extends Model> extends Equatable {
   //
 
   const BatchOperation({
-    this.ref,
     this.model,
     required this.create,
     required this.read,
     required this.update,
     required this.delete,
   });
+
+  //
+  //
+  //
+
+  BatchOperation<DataModel> toGeneric() {
+    return BatchOperation<DataModel>(
+      model: DataModel.fromOrNull(this.model),
+      create: create,
+      read: read,
+      update: update,
+      delete: delete,
+    );
+  }
 
   //
   //
@@ -50,7 +62,6 @@ class BatchOperation<TModel extends Model> extends Equatable {
     bool? delete,
   }) {
     return BatchOperation(
-      ref: ref ?? this.ref,
       model: model ?? this.model,
       create: create ?? this.create,
       read: read ?? this.read,
@@ -76,7 +87,6 @@ class BatchOperation<TModel extends Model> extends Equatable {
 
   @override
   List<Object?> get props => [
-        ref,
         model,
         delete,
         update,
