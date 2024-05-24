@@ -41,7 +41,7 @@ class BatchOperation<TModel extends Model> extends Equatable {
 
   BatchOperation<DataModel> toGeneric() {
     return BatchOperation<DataModel>(
-      model: DataModel.fromOrNull(this.model),
+      model: DataModel(data: this.model?.toJson()),
       create: create,
       read: read,
       update: update,

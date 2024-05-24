@@ -25,7 +25,7 @@ dependencies:
   _data:
     path: ../_data
 
-  xyz_gen_annotations: ^0.40.0
+  xyz_gen_annotations: ^0.41.0
   xyz_pod: ^0.31.0
   xyz_utils: ^0.54.0
 
