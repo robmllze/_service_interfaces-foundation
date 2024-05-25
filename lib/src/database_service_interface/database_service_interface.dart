@@ -98,9 +98,9 @@ abstract class DatabaseServiceInterface {
   ///
   /// ### Parameters:
   ///
-  /// - `transactionHandler`: A function that handles the transaction logic.
+  /// - `broker`: A function that handles the transaction logic.
   Future<void> runTransaction(
-    Future<void> Function(TransactionInterface transaction) transactionHandler,
+    Future<void> Function(TransactionInterface broker) transactionHandler,
   );
 
   //
@@ -111,15 +111,8 @@ abstract class DatabaseServiceInterface {
   ///
   /// ### Parameters:
   ///
-  /// - `writes`: A list of batch operations to execute.
-  ///
-  /// Note: Firestore is currently the only known service that supports this
-  /// feature. This function could be creatively adapted to simulate similar
-  /// behavior with other services. Use this for testing or prototyping only.
-  @visibleForTesting
+  /// - `operations`: A list of batch operations to execute.
   Future<Iterable<Model?>> runBatchOperations(
     Iterable<BatchOperation> operations,
-  ) {
-    throw UnsupportedError('Only Firestore supports this feature.');
-  }
+  );
 }
