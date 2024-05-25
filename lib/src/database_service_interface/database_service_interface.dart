@@ -17,6 +17,12 @@ abstract class DatabaseServiceInterface {
   //
   //
 
+  const DatabaseServiceInterface();
+
+  //
+  //
+  //
+
   /// Creates a model on the database.
   ///
   /// ### Parameters:
@@ -93,16 +99,9 @@ abstract class DatabaseServiceInterface {
   /// ### Parameters:
   ///
   /// - `transactionHandler`: A function that handles the transaction logic.
-  ///
-  /// Note: Firestore is currently the only known service that supports this
-  /// feature. This function could be creatively adapted to simulate similar
-  /// behavior with other services. Use this for testing or prototyping only.
-  @visibleForTesting
   Future<void> runTransaction(
-    Future<void> Function(dynamic transaction) transactionHandler,
-  ) {
-    throw UnsupportedError('Only Firestore supports this feature.');
-  }
+    Future<void> Function(TransactionInterface transaction) transactionHandler,
+  );
 
   //
   //

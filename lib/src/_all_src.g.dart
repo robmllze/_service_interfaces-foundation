@@ -25,3 +25,4 @@ export 'field_value_interface.dart';
 export 'file_service_interface/file_service_interface.dart';
 export 'functions_service_interface/functions_service_interface.dart';
 export 'service_environment.dart';
+export 'transaction_interface.dart';
