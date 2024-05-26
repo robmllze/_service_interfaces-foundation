@@ -14,8 +14,8 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class CollectionServiceInterface<T extends Model>
-    extends DataServiceInterface<Iterable<T>> {
+abstract class CollectionServiceInterface<TModel extends Model>
+    extends DataServiceInterface<Iterable<TModel>> {
   //
   //
   //
@@ -58,16 +58,17 @@ abstract class CollectionServiceInterface<T extends Model>
   //
 
   @override
-  Stream<Iterable<T>> stream([int? limit]) {
-    final stream = this.serviceEnvironment.databaseServiceBroker.streamModelCollection(
+  Stream<Iterable<TModel>> stream([int? limit]) {
+    return this
+        .serviceEnvironment
+        .databaseServiceBroker
+        .streamModelCollection<TModel>(
           this.databaseRef(),
+          (e) => this.fromJsonOrNull(e),
           ascendByField: this.ascendByField,
           descendByField: this.descendByField,
           limit: limit,
-        );
-    final models = stream.map(
-      (e) => e.map((e) => letAs<T>(this.fromJson(e?.data ?? {}))).nonNulls,
-    );
-    return models;
+        )
+        .map((e) => e.nonNulls);
   }
 }

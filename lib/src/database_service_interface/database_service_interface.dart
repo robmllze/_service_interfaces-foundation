@@ -30,7 +30,10 @@ abstract class DatabaseServiceInterface {
   /// - `ref`: The reference to the document or table where the model should
   /// be streamed.
   @visibleForTesting
-  Stream<DataModel?> streamModel(DataRef ref);
+  Stream<TModel?> streamModel<TModel extends Model>(
+    DataRef ref,
+    TModel? Function(Map<String, dynamic>? data) fromJsonOrNull,
+  );
 
   //
   //
@@ -41,8 +44,9 @@ abstract class DatabaseServiceInterface {
   /// - `ref`: The reference to the collection or table where the collection
   /// should be streamed.
   /// - `limit` The maximum number of model to be streamed.
-  Stream<Iterable<DataModel?>> streamModelCollection(
-    DataRef ref, {
+  Stream<Iterable<TModel?>> streamModelCollection<TModel extends Model>(
+    DataRef ref,
+    TModel? Function(Map<String, dynamic>? data) fromJsonOrNull, {
     Object? ascendByField,
     Object? descendByField,
     int? limit,
@@ -59,7 +63,7 @@ abstract class DatabaseServiceInterface {
   /// - `model` is the model data to be set.
   /// - `model.ref` is the reference to the document or table where the model
   /// should be set.
-  Future<void> createModel(Model model);
+  Future<void> createModel<TModel extends Model>(TModel model);
 
   //
   //
@@ -72,7 +76,7 @@ abstract class DatabaseServiceInterface {
   /// - `model` is the model data to be set.
   /// - `model.ref` is the reference to the document or table where the model
   /// should be set.
-  Future<void> setModel(Model model);
+  Future<void> setModel<TModel extends Model>(TModel model);
 
   //
   //
@@ -85,9 +89,9 @@ abstract class DatabaseServiceInterface {
   /// - `ref`: The reference to the document or table where the model should
   /// be retrieved.
   Future<TModel?> readModel<TModel extends Model>(
-    DataRef ref, [
-    TModel? Function(Model? model)? convert,
-  ]);
+    DataRef ref,
+    TModel? Function(Map<String, dynamic>? data) fromJsonOrNull,
+  );
 
   //
   //
@@ -105,7 +109,7 @@ abstract class DatabaseServiceInterface {
   ///
   /// When overriding, ensure this method throws an error if the model does
   /// not exist!
-  Future<void> updateModel(Model model);
+  Future<void> updateModel<TModel extends Model>(TModel model);
 
   //
   //
@@ -141,7 +145,7 @@ abstract class DatabaseServiceInterface {
   /// ### Parameters:
   ///
   /// - `operations`: A list of batch operations to execute.
-  Future<Iterable<Model?>> runBatchOperations(
-    Iterable<BatchOperation> operations,
+  Future<Iterable<TModel?>> runBatchOperations<TModel extends Model>(
+    Iterable<BatchOperation<TModel>> operations,
   );
 }

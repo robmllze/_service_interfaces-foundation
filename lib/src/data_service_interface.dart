@@ -65,7 +65,7 @@ abstract class DataServiceInterface<T> {
 
   /// Override this method to specify how to convert the raw data from
   /// the database into a usable object.
-  dynamic fromJson(Map<String, dynamic> data) => throw UnimplementedError();
+  dynamic fromJsonOrNull(Map<String, dynamic>? data) => throw UnimplementedError();
 
   /// Restarts the service by streaming data from the database. Only
   /// the first [limit] number of data elements will be streamed. This method

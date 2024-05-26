@@ -14,7 +14,8 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class DocumentServiceInterface<T extends Model> extends DataServiceInterface<T> {
+abstract class DocumentServiceInterface<TModel extends Model>
+    extends DataServiceInterface<TModel?> {
   //
   //
   //
@@ -36,11 +37,17 @@ abstract class DocumentServiceInterface<T extends Model> extends DataServiceInte
 
   @nonVirtual
   @override
-  Stream<T> stream([int? limit]) {
-    return this
-        .serviceEnvironment
-        .databaseServiceBroker
-        .streamModel(this.databaseRef())
-        .map((e) => this.fromJson(e?.data ?? {}));
+  Stream<TModel?> stream([int? limit]) {
+    return this.serviceEnvironment.databaseServiceBroker.streamModel<TModel>(
+          this.databaseRef(),
+          (e) => this.fromJsonOrNull(e),
+        );
   }
+
+  //
+  //
+  //
+
+  @override
+  TModel? fromJsonOrNull(Map<String, dynamic>? data);
 }
