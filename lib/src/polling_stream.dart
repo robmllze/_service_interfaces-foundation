@@ -8,39 +8,35 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-// ignore_for_file: invalid_use_of_visible_for_testing_member
-
-import '/_common.dart';
+import 'dart:async';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class DocumentServiceInterface<T extends Model> extends DataServiceInterface<T> {
-  //
-  //
-  //
-
-  final String id;
-
-  //
-  //
-  //
-
-  DocumentServiceInterface({
-    required super.serviceEnvironment,
-    required this.id,
-  });
-
-  //
-  //
-  //
-
-  @nonVirtual
-  @override
-  Stream<T> stream([int? limit]) {
-    return this
-        .serviceEnvironment
-        .databaseServiceBroker
-        .streamModel(this.databaseRef())
-        .map((e) => this.fromJson(e?.data ?? {}));
+Stream<T> pollingStream<T>(
+  Future<T> Function() callback,
+  Duration interval,
+) {
+  final controller = StreamController<T>();
+  Future<void> $startPolling() async {
+    try {
+      while (!controller.isClosed) {
+        try {
+          final result = await callback();
+          controller.add(result);
+        } catch (e) {
+          controller.addError(e);
+        }
+        await Future.delayed(interval);
+      }
+    } catch (e) {
+      if (!controller.isClosed) {
+        controller.addError(e);
+        controller.close();
+      }
+    }
   }
+
+  $startPolling();
+
+  return controller.stream;
 }

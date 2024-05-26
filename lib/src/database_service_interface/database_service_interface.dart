@@ -23,6 +23,35 @@ abstract class DatabaseServiceInterface {
   //
   //
 
+  /// Streams a single model from the database.
+  ///
+  /// ### Parameters:
+  ///
+  /// - `ref`: The reference to the document or table where the model should
+  /// be streamed.
+  @visibleForTesting
+  Stream<DataModel?> streamModel(DataRef ref);
+
+  //
+  //
+  //
+
+  /// Streams a collection of model from the database.
+  ///
+  /// - `ref`: The reference to the collection or table where the collection
+  /// should be streamed.
+  /// - `limit` The maximum number of model to be streamed.
+  Stream<Iterable<DataModel?>> streamModelCollection(
+    DataRef ref, {
+    Object? ascendByField,
+    Object? descendByField,
+    int? limit,
+  });
+
+  //
+  //
+  //
+
   /// Creates a model on the database.
   ///
   /// ### Parameters:

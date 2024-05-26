@@ -59,7 +59,7 @@ abstract class CollectionServiceInterface<T extends Model>
 
   @override
   Stream<Iterable<T>> stream([int? limit]) {
-    final stream = this.serviceEnvironment.databaseQueryBroker.streamModelCollection(
+    final stream = this.serviceEnvironment.databaseServiceBroker.streamModelCollection(
           this.databaseRef(),
           ascendByField: this.ascendByField,
           descendByField: this.descendByField,
