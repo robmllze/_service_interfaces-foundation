@@ -12,12 +12,12 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class DatabaseQueryInterface<TDatabaseServiceInterface extends DatabaseServiceInterface> {
+abstract class DatabaseQueryInterface {
   //
   //
   //
 
-  final TDatabaseServiceInterface databaseServiceBroker;
+  final DatabaseServiceInterface databaseServiceBroker;
 
   //
   //
