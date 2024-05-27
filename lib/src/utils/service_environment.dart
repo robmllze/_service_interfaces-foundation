@@ -15,7 +15,6 @@ import '/_common.dart';
 class ServiceEnvironment<
     TAuthServiceInterface extends AuthServiceInterface,
     TDatabaseServiceInterface extends DatabaseServiceInterface,
-    TLocalDatabaseServiceInterface extends DatabaseServiceInterface,
     TDatabaseQueryInterface extends DatabaseQueryInterface,
     TFunctionsServiceInterface extends FunctionsServiceInterface,
     TFileServiceInterface extends FileServiceInterface,
@@ -26,7 +25,6 @@ class ServiceEnvironment<
 
   late final TAuthServiceInterface? _authServiceBroker;
   late final TDatabaseServiceInterface? _databaseServiceBroker;
-  late final TLocalDatabaseServiceInterface? _localDatabaseServiceBroker;
   late final TDatabaseQueryInterface? _databaseQueryBroker;
   late final TFunctionsServiceInterface? _functionsServiceBroker;
   late final TFileServiceInterface? _fileServiceBroker;
@@ -39,7 +37,6 @@ class ServiceEnvironment<
   ServiceEnvironment({
     TAuthServiceInterface? authServiceBroker,
     TDatabaseServiceInterface? databaseServiceBroker,
-    TLocalDatabaseServiceInterface? localDatabaseServiceBroker,
     TDatabaseQueryInterface? databaseQueryBroker,
     TFunctionsServiceInterface? functionsServiceBroker,
     TFileServiceInterface? fileServiceBroker,
@@ -47,7 +44,6 @@ class ServiceEnvironment<
   }) {
     this._authServiceBroker = authServiceBroker;
     this._databaseServiceBroker = databaseServiceBroker;
-    this._localDatabaseServiceBroker = localDatabaseServiceBroker;
     this._databaseQueryBroker = databaseQueryBroker;
     this._functionsServiceBroker = functionsServiceBroker;
     this._fileServiceBroker = fileServiceBroker;
@@ -74,15 +70,6 @@ class ServiceEnvironment<
       );
     }
     return this._databaseServiceBroker;
-  }
-
-  TLocalDatabaseServiceInterface get localDatabaseServiceBroker {
-    if (this._localDatabaseServiceBroker == null) {
-      throw UnimplementedError(
-        'localDatabaseServiceBroker is not available in the current environment.',
-      );
-    }
-    return this._localDatabaseServiceBroker;
   }
 
   TDatabaseQueryInterface get databaseQueryBroker {
