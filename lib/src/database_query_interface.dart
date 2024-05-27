@@ -32,7 +32,7 @@ abstract class DatabaseQueryInterface {
   //
 
   Stream<Iterable<ModelUserPub>> streamUserPubsByNameOrEmailQuery({
-    required String nameOrEmailQuery,
+    required String partialNameOrEmail,
     int? limit = 10,
   });
 
@@ -40,10 +40,10 @@ abstract class DatabaseQueryInterface {
   //
   //
 
-  Stream<Iterable<T>> streamByWhereInElements<T>({
+  Stream<Iterable<TModel>> streamByWhereInElements<TModel extends Model>({
     required Iterable<String> elements,
     required DataRef collectionRef,
-    required T? Function(Map<String, dynamic>? otherData) fromJsonOrNull,
+    required TModel? Function(Map<String, dynamic>? otherData) fromJsonOrNull,
     required Set<String> elementKeys,
   });
 
@@ -51,20 +51,29 @@ abstract class DatabaseQueryInterface {
   //
   //
 
-  Stream<Iterable<ModelRelationship>> streamRelationshipsForAnyMembers({
-    required Iterable<String> pids,
-    int? limit,
+  Stream<Iterable<ModelRelationship>> streamRelationshipsForAnyMember({
+    required Iterable<String> memberPids,
     Iterable<RelationshipDefType> defTypes = const {},
+    int? limit,
   });
 
   //
   //
   //
 
-  Stream<Iterable<ModelRelationship>> streamRelationshipsForAllMembers({
-    required Iterable<String> pids,
-    int? limit,
+  Stream<Iterable<ModelRelationship>> streamRelationshipsForEveryMember({
+    required Iterable<String> memberPids,
     Iterable<RelationshipDefType> defTypes = const {},
+    int? limit,
+  });
+
+  //
+  //
+  //
+
+  Stream<Iterable<ModelFileEntry>> streamFilesByCreatorId({
+    required Set<String> createdByAny,
+    int? limit,
   });
 
   //
@@ -77,13 +86,4 @@ abstract class DatabaseQueryInterface {
   }) {
     throw UnimplementedError();
   }
-
-  //
-  //
-  //
-
-  Stream<Iterable<ModelFileEntry>> streamFilesByCreatorId({
-    required Set<String> createdByAny,
-    int? limit,
-  });
 }

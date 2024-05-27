@@ -44,7 +44,7 @@ abstract class DatabaseServiceInterface {
   /// - `ref`: The reference to the collection or table where the collection
   /// should be streamed.
   /// - `limit` The maximum number of model to be streamed.
-  Stream<Iterable<TModel?>> streamModelCollection<TModel extends Model>(
+  Stream<Iterable<TModel>> streamModelCollection<TModel extends Model>(
     DataRef ref,
     TModel? Function(Map<String, dynamic>? data) fromJsonOrNull, {
     Object? ascendByField,
