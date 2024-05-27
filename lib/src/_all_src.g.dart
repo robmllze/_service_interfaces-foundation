@@ -27,3 +27,4 @@ export 'functions_service_interface/functions_service_interface.dart';
 export 'transaction_interface.dart';
 export 'utils/polling_stream.dart';
 export 'utils/service_environment.dart';
+export 'utils/stream_mapper.dart';

@@ -82,47 +82,7 @@ abstract class DatabaseQueryInterface {
   //
   //
 
-  Stream<Iterable<ModelUser>> streamUsersByPids({
-    required Iterable<String> pids1,
-  }) {
-    throw UnimplementedError();
-  }
-
-  //
-  //
-  //
-
-  Stream<Iterable<ModelOrganization>> streamOrganizationsByPids({
-    required Iterable<String> pids1,
-  }) {
-    throw UnimplementedError();
-  }
-
-  //
-  //
-  //
-
-  Stream<Iterable<ModelProject>> streamProjectsByPids({
-    required Iterable<String> pids1,
-  }) {
-    throw UnimplementedError();
-  }
-
-  //
-  //
-  //
-
-  Stream<Iterable<ModelJob>> streamJobsByPids({
-    required Iterable<String> pids1,
-  }) {
-    throw UnimplementedError();
-  }
-
-  //
-  //
-  //
-
-  Stream<Iterable<ModelFileEntry>> streamFileByCreatorId({
+  Stream<Iterable<ModelFileEntry>> streamFilesByCreatorId({
     required Set<String> createdByAny,
     int? limit,
   });
