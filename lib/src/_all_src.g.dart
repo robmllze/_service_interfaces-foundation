@@ -25,6 +25,5 @@ export 'field_value_interface.dart';
 export 'file_service_interface/file_service_interface.dart';
 export 'functions_service_interface/functions_service_interface.dart';
 export 'transaction_interface.dart';
-export 'utils/stream_mapper.dart';
 export 'utils/polling_stream.dart';
 export 'utils/service_environment.dart';

@@ -1,3 +1,7 @@
+//.red
+// Not needed. There are better ways to do this. I kept this here because it's interesting.
+//.red~
+
 // //.title
 // // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 // //

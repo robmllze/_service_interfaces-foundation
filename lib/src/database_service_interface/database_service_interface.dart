@@ -56,6 +56,17 @@ abstract class DatabaseServiceInterface {
   //
   //
 
+  /// Deletes a collection from the database.
+  ///
+  /// - `collectionRef`: The reference to the collection to be deleted.
+  Future<void> deleteCollection({
+    required DataRef collectionRef,
+  });
+
+  //
+  //
+  //
+
   /// Creates a model on the database.
   ///
   /// ### Parameters:
