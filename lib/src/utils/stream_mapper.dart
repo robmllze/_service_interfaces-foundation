@@ -17,7 +17,7 @@ class StreamMapper<A> {
   //
   //
 
-  final Stream<A?> stream;
+  final Stream<A> stream;
 
   //
   //
@@ -42,7 +42,7 @@ class StreamMapper<A> {
 
 /// Combines two streams into one. The first stream is used to create the second stream.
 Stream<B> _firstToSecondStream<A, B>(
-  Stream<A?> stream1,
+  Stream<A> stream1,
   Stream<B> Function(A result1) stream2Creator,
 ) {
   late StreamController<B> controller;
@@ -55,15 +55,13 @@ Stream<B> _firstToSecondStream<A, B>(
         return e;
       }).listen(
         (result1) {
-          if (result1 is A) {
-            final stream2 = stream2Creator(result1!);
-            subscription2 = stream2.listen(
-              controller.add,
-              onError: controller.addError,
-              onDone: controller.close,
-            );
-            subscription1?.cancel();
-          }
+          final stream2 = stream2Creator(result1!);
+          subscription2 = stream2.listen(
+            controller.add,
+            onError: controller.addError,
+            onDone: controller.close,
+          );
+          subscription1?.cancel();
         },
         onError: controller.addError,
         onDone: controller.close,
