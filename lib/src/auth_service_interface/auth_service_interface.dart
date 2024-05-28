@@ -8,6 +8,8 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+import 'package:_data/_common.dart';
+
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -17,8 +19,8 @@ abstract class AuthServiceInterface {
   //
   //
 
-  final pCurrentUser = Pod<AuthUser?>(null);
-  void Function(AuthUser)? onLogin;
+  final pCurrentUser = Pod<ModelAuthUser?>(null);
+  void Function(ModelAuthUser)? onLogin;
   void Function()? onLogout;
 
   //

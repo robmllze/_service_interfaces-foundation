@@ -9,7 +9,6 @@
 
 export 'auth_service_interface/auth_service_exceptions.dart';
 export 'auth_service_interface/auth_service_interface.dart';
-export 'auth_service_interface/auth_user.dart';
 export 'collection_service_interface.dart';
 export 'data_service_interface.dart';
 export 'database_query_interface.dart';
