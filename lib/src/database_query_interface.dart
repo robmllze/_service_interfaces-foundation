@@ -43,7 +43,7 @@ abstract class DatabaseQueryInterface {
   Stream<Iterable<TModel>> streamByWhereInElements<TModel extends Model>({
     required Iterable<String> elements,
     required DataRef collectionRef,
-    required TModel? Function(Map<String, dynamic>? otherData) fromJsonOrNull,
+    required TFromJsonOrNull<TModel> fromJsonOrNull,
     required Set<String> elementKeys,
   });
 

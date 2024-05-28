@@ -8,9 +8,15 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+import '/_common.dart';
+
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class TransactionInterface<TData> {
+typedef TFromJsonOrNull<T> = T? Function(Map<String, dynamic>? otherData);
+
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+abstract class TransactionInterface {
   //
   //
   //
@@ -21,32 +27,41 @@ abstract class TransactionInterface<TData> {
   //
   //
 
-  void create(String path, TData data);
-  Future<TData?> read(String path);
-  void update(String path, TData data);
-  void delete(String path);
-  Future<Map<String, TData?>> commit();
+  void create(Model model);
+
+  Future<TModel?> read<TModel extends Model>(
+    DataRef ref,
+    TFromJsonOrNull<TModel> fromJsonOrNull,
+  );
+
+  void update(Model model);
+
+  void delete(DataRef ref);
+
+  @protected
+  Future<List<Model>> commit();
+
   Future<void> discard();
 }
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class TransactionOperation<TData, TReference> {
+abstract class TransactionOperation<TReference> {
   //
   //
   //
 
-  final String path;
-
-  //
-  //
-  //
-
-  const TransactionOperation(this.path);
+  final DataRef ref;
 
   //
   //
   //
 
-  Future<TData?> execute(TReference reference);
+  const TransactionOperation(this.ref);
+
+  //
+  //
+  //
+
+  Future<dynamic> execute(TReference reference);
 }
