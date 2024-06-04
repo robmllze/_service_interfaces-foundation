@@ -41,7 +41,41 @@ abstract class FunctionsServiceInterface {
   //
   //
 
-  Future<bool> deleteCollection(String collectionPath) async {
+  Future<bool> deleteJob({
+    required String jobId,
+    required String jobPid,
+  }) async {
+    final result = await callDeleteJobFunction(
+      functionsInterface: this,
+      authServiceBroker: authServiceBroker,
+      jobId: jobId,
+      jobPid: jobPid,
+    );
+    return result.success;
+  }
+
+  //
+  //
+  //
+
+  Future<bool> deleteDocument({
+    required String documentPath,
+  }) async {
+    final result = await callDeleteDocumentFunction(
+      functionsInterface: this,
+      authServiceBroker: authServiceBroker,
+      documentPath: documentPath,
+    );
+    return result.success;
+  }
+
+  //
+  //
+  //
+
+  Future<bool> deleteCollection({
+    required String collectionPath,
+  }) async {
     final result = await callDeleteCollectionFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,

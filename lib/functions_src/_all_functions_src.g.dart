@@ -8,4 +8,6 @@
 //.title~
 
 export 'delete_collection.dart';
+export 'delete_document.dart';
+export 'job_crud/delete_job.dart';
 export 'send_emails_via_sendgrid.dart';
