@@ -8,49 +8,17 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import '/_common.dart';
+import 'package:http/http.dart' as http;
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class NotificationServiceInterface {
-  //
-  //
-  //
-
-  const NotificationServiceInterface();
-
-  //
-  //
-  //
-
-  Future<void> send({
-    required String title,
-    required String body,
-    required String topic,
-    required Map<String, dynamic> data,
-  });
-
-  //
-  //
-  //
-
-  Future<void> registerToken({required String currentUserPid});
-
-  //
-  //
-  //
-
-  Future<ModelNotificationsRegistration?> getRegistration();
-
-  //
-  //
-  //
-
-  Future<void> subscribeToTopic(String topic);
-
-  //
-  //
-  //
-
-  Future<void> unsubscribeFromTopic(String topic);
+/// Get the public IP address of the current device or null if it fails.
+Future<String?> getPublicIPAddress({String source = 'https://api.ipify.org'}) async {
+  try {
+    final response = await http.get(Uri.parse(source));
+    if (response.statusCode == 200) {
+      return response.body;
+    }
+  } catch (_) {}
+  return null;
 }

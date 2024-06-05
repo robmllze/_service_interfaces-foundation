@@ -27,6 +27,10 @@ abstract class TransactionInterface {
   //
   //
 
+  void merge(Model model);
+
+  void overwrite(Model model);
+
   void create(Model model);
 
   Future<TModel?> read<TModel extends Model>(

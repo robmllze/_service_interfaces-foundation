@@ -65,23 +65,35 @@ abstract class DatabaseServiceInterface {
   //
   //
 
-  /// Creates a model on the database.
+  /// Merges a model with the existing data on the database.
+  ///
+  /// - `model` is the model data to be set.
+  /// - `model.ref` is the reference to the document or table where the model
+  /// should be merged.
+  Future<void> mergeModel<TModel extends Model>(TModel model);
+
+  //
+  //
+  //
+
+  /// Overwrites a model on the database.
+  ///
+  /// - `model` is the model data to be set.
+  /// - `model.ref` is the reference to the document or table where the model
+  /// should be overwritten.
+  Future<void> overwriteModel<TModel extends Model>(TModel model);
+
+  //
+  //
+  //
+
+  /// Creates a model on the database. If the model already exists, it
+  /// should throw an error.
   ///
   /// - `model` is the model data to be set.
   /// - `model.ref` is the reference to the document or table where the model
   /// should be set.
   Future<void> createModel<TModel extends Model>(TModel model);
-
-  //
-  //
-  //
-
-  /// Creates or updates (sets) a model on the database.
-  ///
-  /// - `model` is the model data to be set.
-  /// - `model.ref` is the reference to the document or table where the model
-  /// should be set.
-  Future<void> setModel<TModel extends Model>(TModel model);
 
   //
   //
@@ -100,16 +112,12 @@ abstract class DatabaseServiceInterface {
   //
   //
 
-  /// Updates a model on the database.
+  /// Updates a model on the database. If the model does not exist, it should
+  /// throw an error.
   ///
   /// - `model`: The updated model.
   /// - `model.ref`: The reference to the document or table where the model
   /// should be updated.
-  ///
-  /// ### NB:
-  ///
-  /// When overriding, ensure this method throws an error if the model does
-  /// not exist!
   Future<void> updateModel<TModel extends Model>(TModel model);
 
   //
