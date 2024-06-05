@@ -25,8 +25,6 @@ abstract class DatabaseServiceInterface {
 
   /// Streams a single model from the database.
   ///
-  /// ### Parameters:
-  ///
   /// - `ref`: The reference to the document or table where the model should
   /// be streamed.
   @visibleForTesting
@@ -69,8 +67,6 @@ abstract class DatabaseServiceInterface {
 
   /// Creates a model on the database.
   ///
-  /// ### Parameters:
-  ///
   /// - `model` is the model data to be set.
   /// - `model.ref` is the reference to the document or table where the model
   /// should be set.
@@ -82,8 +78,6 @@ abstract class DatabaseServiceInterface {
 
   /// Creates or updates (sets) a model on the database.
   ///
-  /// ### Parameters:
-  ///
   /// - `model` is the model data to be set.
   /// - `model.ref` is the reference to the document or table where the model
   /// should be set.
@@ -94,8 +88,6 @@ abstract class DatabaseServiceInterface {
   //
 
   /// Reads a model from the database.
-  ///
-  /// ### Parameters:
   ///
   /// - `ref`: The reference to the document or table where the model should
   /// be retrieved.
@@ -109,8 +101,6 @@ abstract class DatabaseServiceInterface {
   //
 
   /// Updates a model on the database.
-  ///
-  /// ### Parameters:
   ///
   /// - `model`: The updated model.
   /// - `model.ref`: The reference to the document or table where the model
@@ -128,8 +118,6 @@ abstract class DatabaseServiceInterface {
 
   /// Deletes a model from the database.
   ///
-  /// ### Parameters:
-  ///
   /// - `ref`: The reference to the document or table where the model should
   /// be deleted.
   Future<void> deleteModel(DataRef ref);
@@ -139,8 +127,6 @@ abstract class DatabaseServiceInterface {
   //
 
   /// Initiates a transaction in the database.
-  ///
-  /// ### Parameters:
   ///
   /// - `broker`: A function that handles the transaction logic.
   Future<void> runTransaction(
@@ -152,8 +138,6 @@ abstract class DatabaseServiceInterface {
   //
 
   /// Performs a series of batch operations on the database.
-  ///
-  /// ### Parameters:
   ///
   /// - `operations`: A list of batch operations to execute.
   Future<Iterable<TModel?>> runBatchOperations<TModel extends Model>(

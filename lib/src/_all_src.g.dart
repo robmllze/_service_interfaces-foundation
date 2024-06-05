@@ -23,6 +23,8 @@ export 'document_service_interface.dart';
 export 'field_value_interface.dart';
 export 'file_service_interface/file_service_interface.dart';
 export 'functions_service_interface/functions_service_interface.dart';
+export 'notification_service_interface/notification_service_interface.dart';
+export 'notification_service_interface/notification_topic.dart';
 export 'transaction_interface.dart';
 export 'utils/polling_stream.dart';
 export 'utils/service_environment.dart';

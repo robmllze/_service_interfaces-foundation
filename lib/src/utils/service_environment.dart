@@ -8,7 +8,6 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -18,7 +17,8 @@ class ServiceEnvironment<
     TDatabaseServiceInterface extends DatabaseServiceInterface,
     TDatabaseQueryInterface extends DatabaseQueryInterface,
     TFunctionsServiceInterface extends FunctionsServiceInterface,
-    TFileServiceInterface extends FileServiceInterface> {
+    TFileServiceInterface extends FileServiceInterface,
+    TNotificationServiceInterface extends NotificationServiceInterface> {
   //
   //
   //
@@ -28,6 +28,7 @@ class ServiceEnvironment<
   late final TDatabaseQueryInterface? _databaseQueryBroker;
   late final TFunctionsServiceInterface? _functionsServiceBroker;
   late final TFileServiceInterface? _fileServiceBroker;
+  late final TNotificationServiceInterface? _notificationServiceBroker;
 
   //
   //
@@ -39,12 +40,14 @@ class ServiceEnvironment<
     TDatabaseQueryInterface? databaseQueryBroker,
     TFunctionsServiceInterface? functionsServiceBroker,
     TFileServiceInterface? fileServiceBroker,
+    TNotificationServiceInterface? notificationServiceBroker,
   }) {
     this._authServiceBroker = authServiceBroker;
     this._databaseServiceBroker = databaseServiceBroker;
     this._databaseQueryBroker = databaseQueryBroker;
     this._functionsServiceBroker = functionsServiceBroker;
     this._fileServiceBroker = fileServiceBroker;
+    this._notificationServiceBroker = notificationServiceBroker;
   }
 
   //
@@ -94,6 +97,15 @@ class ServiceEnvironment<
       );
     }
     return this._fileServiceBroker;
+  }
+
+  TNotificationServiceInterface get notificationServiceBroker {
+    if (this._notificationServiceBroker == null) {
+      throw UnimplementedError(
+        'notificationServiceBroker is not available in the current environment.',
+      );
+    }
+    return this._notificationServiceBroker;
   }
 
   //
