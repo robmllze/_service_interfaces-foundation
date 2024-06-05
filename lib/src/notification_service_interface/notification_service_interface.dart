@@ -34,13 +34,19 @@ abstract class NotificationServiceInterface {
   //
   //
 
-  Future<void> registerToken({required String currentUserPid});
+  void onRegistered(ModelAppRegistration registration);
 
   //
   //
   //
 
-  Future<ModelNotificationsRegistration?> getRegistration();
+  Future<void> register({required String currentUserPid});
+
+  //
+  //
+  //
+
+  Future<ModelAppRegistration?> getNewRegistration();
 
   //
   //
