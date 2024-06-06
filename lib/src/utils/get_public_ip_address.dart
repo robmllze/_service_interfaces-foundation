@@ -13,7 +13,7 @@ import 'package:http/http.dart' as http;
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 /// Get the public IP address of the current device or null if it fails.
-Future<String?> getPublicIPAddress({String source = 'https://api.ipify.org'}) async {
+Future<String?> getPublicIPV4Address({String source = 'https://api.ipify.org'}) async {
   try {
     final response = await http.get(Uri.parse(source));
     if (response.statusCode == 200) {

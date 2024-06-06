@@ -34,19 +34,16 @@ abstract class NotificationServiceInterface {
   //
   //
 
-  void onRegistered(ModelAppRegistration registration);
+  void onRegisterDevice(ModelDeviceRegistration registration);
 
   //
   //
   //
 
-  Future<void> register({required String currentUserPid});
-
-  //
-  //
-  //
-
-  Future<ModelAppRegistration?> getNewRegistration();
+  Future<void> register({
+    required String currentUserPid,
+    ModelLocation? location,
+  });
 
   //
   //
