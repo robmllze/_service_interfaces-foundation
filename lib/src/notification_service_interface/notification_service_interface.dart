@@ -49,6 +49,16 @@ abstract class NotificationServiceInterface {
   //
   //
 
+  Future<dynamic> checkAuthorizationStatus();
+
+  Pod<dynamic> get pAuthorizationStatus;
+
+  bool authorizationStatusGrantedSnapshot();
+
+  //
+  //
+  //
+
   Future<void> subscribeToTopic(String topic);
 
   //
@@ -56,4 +66,12 @@ abstract class NotificationServiceInterface {
   //
 
   Future<void> unsubscribeFromTopic(String topic);
+
+  //
+  //
+  //
+
+  void dispose() async {
+    this.pAuthorizationStatus.dispose();
+  }
 }
