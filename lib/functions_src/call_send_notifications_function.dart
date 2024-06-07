@@ -14,14 +14,19 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-Future<({http.Response? response, bool success})> callDeleteJobFunction({
+Future<({http.Response? response, bool success})> callSendNotificationsFunction({
   required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,
-  required String jobId,
-  required String jobPid,
+  required String title,
+  required String body,
+  required Set<String> destinationTokens,
 }) async {
+  assert(
+    destinationTokens.map((e) => e.nullIfEmpty).nonNulls.isNotEmpty,
+    'destinationTokens must not be empty',
+  );
   final idToken = await authServiceBroker.getIdToken();
-  final url = functionsInterface.functionsEndpointUrl('delete_job');
+  final url = functionsInterface.functionsEndpointUrl('send_notifications');
   final response = await http.post(
     url,
     headers: {
@@ -29,10 +34,12 @@ Future<({http.Response? response, bool success})> callDeleteJobFunction({
       'Authorization': 'Bearer $idToken',
     },
     body: jsonEncode({
-      'job_id': jobId,
-      'job_pid': jobPid,
+      'title': title,
+      'body': body,
+      'destination_tokens': destinationTokens.toList(),
     }),
   );
+
   if (response.statusCode == 200) {
     return (response: response, success: true);
   } else {

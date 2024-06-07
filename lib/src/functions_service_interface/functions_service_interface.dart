@@ -88,7 +88,26 @@ abstract class FunctionsServiceInterface {
   //
   //
 
-  Future<bool> sendEmailsViaSendgrid({
+  Future<bool> sendNotifications({
+    required String title,
+    required String body,
+    required Set<String> destinationTokens,
+  }) async {
+    final result = await callSendNotificationsFunction(
+      functionsInterface: this,
+      authServiceBroker: authServiceBroker,
+      title: title,
+      body: body,
+      destinationTokens: destinationTokens,
+    );
+    return result.success;
+  }
+
+  //
+  //
+  //
+
+  Future<bool> sendEmails({
     required String apiKey,
     required String fromEmail,
     required String fromName,
@@ -96,7 +115,7 @@ abstract class FunctionsServiceInterface {
     required String templateId,
     required Map dynamicTemplateData,
   }) async {
-    final result = await callSendEmailsViaSendGridFunction(
+    final result = await callSendEmailsFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,
       apiKey: apiKey,
