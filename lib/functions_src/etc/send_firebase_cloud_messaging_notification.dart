@@ -45,18 +45,9 @@ Future<({http.Response? response, bool success})> sendFirebaseCloudMessagingNoti
     body: jsonEncode({
       'message': {
         'token': destinationToken,
-        'notification': {
+        'data': {
           'title': title,
           'body': body,
-        },
-        'webpush': {
-          'headers': {
-            'Urgency': 'high',
-          },
-          'notification': {
-            'body': title,
-            'requireInteraction': 'true',
-          },
         },
       },
     }),
