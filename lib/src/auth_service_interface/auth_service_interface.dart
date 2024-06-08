@@ -8,7 +8,6 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -53,7 +52,10 @@ abstract class AuthServiceInterface {
   //
   //
 
-  Future<void> logOut();
+  /// Calls the [cleanup] function and then logs out the user.
+  Future<void> logOut({
+    required Future<void> Function() cleanup,
+  });
 
   //
   //
@@ -92,7 +94,10 @@ abstract class AuthServiceInterface {
   //
   //
 
-  Future<void> deleteUser();
+  /// Calls the [cleanup] function and then deletes the user.
+  Future<void> deleteUser({
+    required Future<void> Function() cleanup,
+  });
 
   //
   //

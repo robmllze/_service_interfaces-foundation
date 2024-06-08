@@ -100,7 +100,6 @@ abstract class FunctionsServiceInterface {
       body: body,
       destinationTokens: destinationTokens,
     );
-    printRed(result.response?.body);
     return result.success;
   }
 
