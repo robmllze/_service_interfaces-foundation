@@ -8,7 +8,11 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+export 'dart:convert';
+export 'dart:typed_data';
+
 export 'package:meta/meta.dart';
+export 'package:http/http.dart';
 
 export 'package:xyz_gen_annotations/xyz_gen_annotations.dart';
 export 'package:xyz_pod/xyz_pod.dart';

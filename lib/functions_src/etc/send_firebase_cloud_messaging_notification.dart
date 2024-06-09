@@ -28,7 +28,7 @@ import '/_common.dart';
 /// gcloud auth activate-service-account --key-file=service-account.json
 /// gcloud auth print-access-token
 /// ```
-Future<({http.Response? response, bool success})> sendFirebaseCloudMessagingNotification({
+Future<TFunctionResult> sendFirebaseCloudMessagingNotification({
   required String projectId,
   required String fcmAccessToken,
   required String title,

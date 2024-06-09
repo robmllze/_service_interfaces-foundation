@@ -127,4 +127,23 @@ abstract class FunctionsServiceInterface {
     );
     return result.success;
   }
+
+  //
+  //
+  //
+
+  Future<Uint8List?> processAvatarImage({
+    required dynamic imageUrl,
+  }) async {
+    try {
+      final result = await callProcessAvatarImage(
+        functionsInterface: this,
+        authServiceBroker: authServiceBroker,
+        imageUrl: imageUrl!.toString(),
+      );
+      final bytes = await getProcessedImageBytes(result);
+      return bytes;
+    } catch (_) {}
+    return null;
+  }
 }

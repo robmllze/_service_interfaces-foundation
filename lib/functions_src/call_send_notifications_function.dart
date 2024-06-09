@@ -8,13 +8,11 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import 'package:http/http.dart' as http;
-
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-Future<({http.Response? response, bool success})> callSendNotificationsFunction({
+Future<TFunctionResult> callSendNotificationsFunction({
   required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,
   required String title,
@@ -27,7 +25,7 @@ Future<({http.Response? response, bool success})> callSendNotificationsFunction(
   );
   final idToken = await authServiceBroker.getIdToken();
   final url = functionsInterface.functionsEndpointUrl('send_notifications');
-  final response = await http.post(
+  final response = await post(
     url,
     headers: {
       'Content-Type': 'application/json',

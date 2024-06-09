@@ -3,7 +3,7 @@
 //
 // 🇽🇾🇿 & Dev
 //
-// Licencing details are in the LICENSE file in the root directory.
+// Licensing details are in the LICENSE file in the root directory.
 //
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
@@ -12,18 +12,16 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-Future<TFunctionResult> callSendEmailsFunction({
+Future<TFunctionResult> callProcessAvatarImage({
   required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,
-  required String apiKey,
-  required String fromEmail,
-  required String fromName,
-  required List<String> toEmails,
-  required String templateId,
-  required Map dynamicTemplateData,
+  required dynamic imageUrl,
+  int cropWidth = 64,
+  int cropHeight = 64,
 }) async {
+  final imageUrl1 = imageUrl!.toString();
   final idToken = await authServiceBroker.getIdToken();
-  final url = functionsInterface.functionsEndpointUrl('send_emails_via_sendgrid');
+  final url = functionsInterface.functionsEndpointUrl('process_avatar_image');
   final response = await post(
     url,
     headers: {
@@ -31,12 +29,9 @@ Future<TFunctionResult> callSendEmailsFunction({
       'Authorization': 'Bearer $idToken',
     },
     body: jsonEncode({
-      'api_key': apiKey,
-      'from_email': fromEmail,
-      'from_name': fromName,
-      'to_emails': toEmails,
-      'template_id': templateId,
-      'dynamic_template_data': dynamicTemplateData,
+      'image_url': imageUrl1,
+      'crop_width': cropWidth,
+      'crop_height': cropHeight,
     }),
   );
 
@@ -45,4 +40,18 @@ Future<TFunctionResult> callSendEmailsFunction({
   } else {
     return (response: response, success: false);
   }
+}
+
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+Future<Uint8List?> getProcessedImageBytes(TFunctionResult callProcessAvatarImageResult) async {
+  try {
+    final decoded = jsonDecode(
+      callProcessAvatarImageResult.response!.body,
+    );
+    final base64Image = decoded['image'] as String;
+    final result = base64Decode(base64Image.split(',').last);
+    return result;
+  } catch (_) {}
+  return null;
 }

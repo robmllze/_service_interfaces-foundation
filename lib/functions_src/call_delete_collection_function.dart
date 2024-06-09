@@ -8,20 +8,18 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-import 'package:http/http.dart' as http;
-
 import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-Future<({http.Response? response, bool success})> callDeleteCollectionFunction({
+Future<TFunctionResult> callDeleteCollectionFunction({
   required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,
   required String collectionPath,
 }) async {
   final idToken = await authServiceBroker.getIdToken();
   final url = functionsInterface.functionsEndpointUrl('delete_collection');
-  final response = await http.post(
+  final response = await post(
     url,
     headers: {
       'Content-Type': 'application/json',
