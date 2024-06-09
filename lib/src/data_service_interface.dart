@@ -43,7 +43,7 @@ abstract class DataServiceInterface<T> {
   StreamSubscription<T>? subscription;
 
   /// The value of the data service.
-  final pValue = Pod<T?>(null);
+  final PodListenable<T?> pValue = Pod<T?>(null);
 
   /// The maximum number of data elements to stream.
   int? get limit => this._limit;
@@ -76,7 +76,7 @@ abstract class DataServiceInterface<T> {
     final completer = Completer<T>();
     this.cancelSubscription();
     this.subscription = this.stream(this._setLimit(limit)).listen((e) async {
-      await this.pValue.set(e);
+      await this.pValue.podOrNull!.set(e);
       this.onData(e);
       if (completer.isCompleted == false) {
         completer.complete(e);

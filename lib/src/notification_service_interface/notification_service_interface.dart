@@ -70,7 +70,7 @@ abstract class NotificationServiceInterface {
   Future<dynamic> checkAuthorizationStatus();
 
   /// Holds the current authorization status of the app to send notifications.
-  Pod<dynamic> get pAuthorizationStatus;
+  PodListenable<dynamic> get pAuthorizationStatus;
 
   /// Returns `true` if the location permission is granted. This is a volatile
   /// snapshot and depends on [pAuthorizationStatus].
