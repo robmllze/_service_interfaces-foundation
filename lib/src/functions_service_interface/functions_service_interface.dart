@@ -146,4 +146,23 @@ abstract class FunctionsServiceInterface {
     } catch (_) {}
     return null;
   }
+
+  //
+  //
+  //
+
+  Future<bool> sendMessage({
+    required String senderPid,
+    required String relationshipId,
+    required String message,
+  }) async {
+    final result = await callSendMessageFunction(
+      functionsInterface: this,
+      authServiceBroker: authServiceBroker,
+      senderPid: senderPid,
+      relationshipId: relationshipId,
+      message: message,
+    );
+    return result.success;
+  }
 }
