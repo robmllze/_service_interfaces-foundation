@@ -8,9 +8,17 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-library;
+import '/@interfaces/_common.dart';
 
-export '@interfaces/src/_all_src.g.dart';
-export '@functions/src/_all_src.g.dart';
-export '@apis/src/_all_src.g.dart';
-export '@service_environment/src/_all_src.g.dart';
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+class CreateOrUpdateOperation<TModel extends Model> extends BatchOperation<TModel> {
+  const CreateOrUpdateOperation({
+    required super.model,
+  }) : super(
+          create: true,
+          read: false,
+          update: true,
+          delete: false,
+        );
+}

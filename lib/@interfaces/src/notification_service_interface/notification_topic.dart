@@ -8,9 +8,27 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-library;
+import '/@interfaces/_common.dart';
 
-export '@interfaces/src/_all_src.g.dart';
-export '@functions/src/_all_src.g.dart';
-export '@apis/src/_all_src.g.dart';
-export '@service_environment/src/_all_src.g.dart';
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+class NotificationTopic1 extends Equatable {
+  //
+  //
+  //
+
+  final String topic;
+
+  //
+  //
+  //
+
+  const NotificationTopic1(this.topic);
+
+  //
+  //
+  //
+
+  @override
+  List<Object?> get props => [this.topic];
+}

@@ -8,9 +8,14 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-library;
+//import '/_common.dart';
 
-export '@interfaces/src/_all_src.g.dart';
-export '@functions/src/_all_src.g.dart';
-export '@apis/src/_all_src.g.dart';
-export '@service_environment/src/_all_src.g.dart';
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+abstract class GenAIServiceInterface {
+  //
+  //
+  //
+
+  const GenAIServiceInterface();
+}
