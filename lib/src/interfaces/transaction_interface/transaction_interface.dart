@@ -88,7 +88,3 @@ abstract class TransactionInterface {
   /// Discards the transaction, effectively clearing all pending operations.
   Future<void> discard();
 }
-
-// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-
-typedef TFromJsonOrNull<T> = T? Function(Map<String, dynamic>? otherData);
