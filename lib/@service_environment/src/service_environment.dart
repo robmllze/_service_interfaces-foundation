@@ -12,6 +12,20 @@ import '/@service_environment/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
+/// Represents the service environment of the app, encapsulating all necessary
+/// service brokers.
+/// 
+/// This setup centralizes backend service interactionn required by the app,
+/// enhancing modularity and facilitating environment-specific configurations.
+/// It is designed to be backend-agnostic, allowing the app to integrate
+/// seamlessly with different types of services without dependency on specific
+/// implementations. This class acts as a container for various service
+/// interfaces such as authentication, database operations, file management,
+/// and more, each defined by specific generic parameters.
+/// 
+/// By managing these services centrally, this class simplifies the
+/// architectural complexity and boosts the scalability and maintainability of
+/// the application.
 class ServiceEnvironment<
     TAuthServiceInterface extends AuthServiceInterface,
     TDatabaseServiceInterface extends DatabaseServiceInterface,
@@ -54,6 +68,32 @@ class ServiceEnvironment<
   //
   //
 
+  /// The current service environment provided by the environment variable.
+  static const CURRENT_SERVICE_ENVIRONMENT = String.fromEnvironment('SERVICE_ENVIRONMENT');
+
+  /// Returns the current service environment. Defaults to
+  /// [ServiceEnvironmentType.TEST] if the environment variable is not set.
+  ///
+  /// To specify the service environment, run or build the app with one of
+  /// the following flags:
+  ///
+  /// - `--dart-define=SERVICE_ENVIRONMENT=DEV`
+  /// - `--dart-define=SERVICE_ENVIRONMENT=TEST`
+  /// - `--dart-define=SERVICE_ENVIRONMENT=STAGING`
+  /// - `--dart-define=SERVICE_ENVIRONMENT=PROD`
+  static ServiceEnvironmentType get currentServiceEnvironment {
+    return ServiceEnvironmentType.values.valueOf(CURRENT_SERVICE_ENVIRONMENT) ??
+        ServiceEnvironmentType.TEST;
+  }
+
+  //
+  //
+  //
+
+  /// The current authenticated user model.
+  ModelAuthUser? get currentUser => this.authServiceBroker.pCurrentUser.value;
+
+  /// The authentication service broker to manage user authentication.
   TAuthServiceInterface get authServiceBroker {
     if (this._authServiceBroker == null) {
       throw UnimplementedError(
@@ -63,6 +103,11 @@ class ServiceEnvironment<
     return this._authServiceBroker;
   }
 
+  //
+  //
+  //
+
+  /// The database service broker to manage database CRUD operations.
   TDatabaseServiceInterface get databaseServiceBroker {
     if (this._databaseServiceBroker == null) {
       throw UnimplementedError(
@@ -72,6 +117,11 @@ class ServiceEnvironment<
     return this._databaseServiceBroker;
   }
 
+  //
+  //
+  //
+
+  /// The database query broker to manage database queries.
   TDatabaseQueryInterface get databaseQueryBroker {
     if (this._databaseQueryBroker == null) {
       throw UnimplementedError(
@@ -81,6 +131,11 @@ class ServiceEnvironment<
     return this._databaseQueryBroker;
   }
 
+  //
+  //
+  //
+
+  /// The functions service broker to manage cloud functions.
   TFunctionsServiceInterface get functionsServiceBroker {
     if (this._functionsServiceBroker == null) {
       throw UnimplementedError(
@@ -90,6 +145,11 @@ class ServiceEnvironment<
     return this._functionsServiceBroker;
   }
 
+  //
+  //
+  //
+
+  /// The file service broker to manage file uploads and downloads.
   TFileServiceInterface get fileServiceBroker {
     if (this._fileServiceBroker == null) {
       throw UnimplementedError(
@@ -99,6 +159,11 @@ class ServiceEnvironment<
     return this._fileServiceBroker;
   }
 
+  //
+  //
+  //
+
+  /// The notification service broker to manage notifications.
   TNotificationServiceInterface get notificationServiceBroker {
     if (this._notificationServiceBroker == null) {
       throw UnimplementedError(
@@ -106,22 +171,5 @@ class ServiceEnvironment<
       );
     }
     return this._notificationServiceBroker;
-  }
-
-  //
-  //
-  //
-
-  ModelAuthUser? get currentUser => this.authServiceBroker.pCurrentUser.value;
-
-  //
-  //
-  //
-
-  static const CURRENT_SERVICE_ENVIRONMENT = String.fromEnvironment('SERVICE_ENVIRONMENT');
-
-  static ServiceEnvironmentType get currentServiceEnvironment {
-    return ServiceEnvironmentType.values.valueOf(CURRENT_SERVICE_ENVIRONMENT) ??
-        ServiceEnvironmentType.TEST;
   }
 }

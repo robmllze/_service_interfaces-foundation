@@ -12,6 +12,20 @@ import '/@functions/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
+/// Calls the `send_notifications` function.
+/// 
+/// - [functionsInterface] The functions broker to use.
+/// - [authServiceBroker] The authentication broker to use to verify access.
+/// - [title] The title of the notification.
+/// - [body] The body of the notification.
+/// - [destinationTokens] The list of destination tokens to send the
+/// notification to.
+/// 
+/// Returns the response and a success flag as a [THttpFunctionResult].
+/// 
+/// **Notes:**
+/// 
+/// - This assumes that the function is deployed.
 Future<THttpFunctionResult> callSendNotificationsFunction({
   required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,

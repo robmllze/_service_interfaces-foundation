@@ -12,13 +12,23 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
+/// Defines the core functionalities of an authentication service.
+/// 
+/// This interface ensures that any authentication system implementation adheres
+/// to the specified methods and behaviors necessary for managing user sessions
+/// within the application. It is designed to be backend-agnostic, allowing for
+/// integration with various authentication systems without altering the
+/// interface's fundamental operations.
+/// 
+/// This flexibility ensures that the application can adapt to different
+/// authentication backends while maintaining consistent session management and
+/// security protocols across various implementations.
 abstract class AuthServiceInterface {
   //
   //
   //
 
-  final pCurrentUser = Pod<ModelAuthUser?>(null);
-  void Function(ModelAuthUser)? onLogin;
+  void Function(ModelAuthUser currentUser)? onLogin;
   void Function()? onLogout;
 
   //
@@ -29,6 +39,12 @@ abstract class AuthServiceInterface {
     this.onLogin,
     this.onLogout,
   });
+
+  //
+  //
+  //
+
+  final PodListenable<ModelAuthUser?> pCurrentUser = Pod<ModelAuthUser?>(null);
 
   //
   //

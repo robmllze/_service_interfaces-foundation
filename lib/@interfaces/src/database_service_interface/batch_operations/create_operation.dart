@@ -12,7 +12,11 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class CreateOperation<TModel extends Model> extends BatchOperation<TModel> {
+/// Represents a database batch operation that creates a model.
+/// 
+/// Batch operations allow for multiple operations to be performed in a single
+/// request to the database service.
+final class CreateOperation<TModel extends Model> extends BatchOperation<TModel> {
   const CreateOperation({
     required super.model,
   }) : super(

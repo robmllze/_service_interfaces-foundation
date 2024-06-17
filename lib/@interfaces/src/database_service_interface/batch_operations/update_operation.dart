@@ -12,7 +12,7 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class UpdateOperation<TModel extends Model> extends BatchOperation<TModel> {
+final class UpdateOperation<TModel extends Model> extends BatchOperation<TModel> {
   const UpdateOperation({
     required super.model,
   }) : super(

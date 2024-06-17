@@ -12,7 +12,11 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class DeleteOperation<TModel extends Model> extends BatchOperation<TModel> {
+/// Represents a database batch operation that deletes a model.
+///
+/// Batch operations allow for multiple operations to be performed in a single
+/// request to the database service.
+final class DeleteOperation<TModel extends Model> extends BatchOperation<TModel> {
   const DeleteOperation({
     required super.model,
   }) : super(
@@ -25,7 +29,7 @@ class DeleteOperation<TModel extends Model> extends BatchOperation<TModel> {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class DeleteDataOperation extends DeleteOperation<DataModel> {
+final class DeleteDataOperation extends DeleteOperation<DataModel> {
   DeleteDataOperation({
     required DataRef dataRef,
   }) : super(

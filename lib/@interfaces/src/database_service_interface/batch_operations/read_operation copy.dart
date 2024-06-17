@@ -12,7 +12,11 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class ReadOperation<TModel extends Model> extends BatchOperation<TModel> {
+/// Represents a database batch operation that reads a model.
+///
+/// Batch operations allow for multiple operations to be performed in a single
+/// request to the database service.
+final class ReadOperation<TModel extends Model> extends BatchOperation<TModel> {
   const ReadOperation({
     required super.model,
   }) : super(
@@ -25,7 +29,7 @@ class ReadOperation<TModel extends Model> extends BatchOperation<TModel> {
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class ReadDataOperation extends ReadOperation<DataModel> {
+final class ReadDataOperation extends ReadOperation<DataModel> {
   ReadDataOperation({
     required DataRef dataRef,
   }) : super(

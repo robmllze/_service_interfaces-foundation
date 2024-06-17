@@ -12,17 +12,22 @@ import 'package:equatable/equatable.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class EmailAlreadyInUseException extends AuthServiceException {
+/// An exception thrown when a user tries to sign up with an email that is
+/// already in use.
+final class EmailAlreadyInUseException extends AuthServiceException {
   const EmailAlreadyInUseException() : super('email-already-in-use');
 }
 
-class InvalidCredentialException extends AuthServiceException {
+/// An exception thrown when a user tries to sign in with invalid credentials,
+/// such as an incorrect email or password.
+final class InvalidCredentialException extends AuthServiceException {
   const InvalidCredentialException() : super('invalid-credential');
 }
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-class AuthServiceException implements Exception, Equatable {
+/// Represents an exception thrown by an authentication service broker.
+sealed class AuthServiceException implements Exception, Equatable {
   //
   //
   //

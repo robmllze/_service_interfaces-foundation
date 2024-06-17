@@ -65,7 +65,7 @@ abstract class FunctionsServiceInterface {
     required String documentPath,
   }) async {
     final result = await callDeleteDocumentFunction(
-      functionsInterface: this,
+      functionsBroker: this,
       authServiceBroker: authServiceBroker,
       documentPath: documentPath,
     );
@@ -80,7 +80,7 @@ abstract class FunctionsServiceInterface {
     required String collectionPath,
   }) async {
     final result = await callDeleteCollectionFunction(
-      functionsInterface: this,
+      functionsBroker: this,
       authServiceBroker: authServiceBroker,
       collectionPath: collectionPath,
     );
@@ -140,7 +140,7 @@ abstract class FunctionsServiceInterface {
   }) async {
     try {
       final result = await callProcessAvatarImage(
-        functionsInterface: this,
+        functionsBroker: this,
         authServiceBroker: authServiceBroker,
         imageUrl: imageUrl!.toString(),
       );

@@ -12,6 +12,15 @@ import '/@functions/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
+/// Calls the `send_message` function.
+/// 
+/// - [functionsInterface] The functions broker to use.
+/// - [authServiceBroker] The authentication broker to use to verify access.
+/// - [senderPid] The sender's PID.
+/// - [relationshipId] The ID of the relationship to send the message to.
+/// - [message] The message to send.
+/// 
+/// Returns the response and a success flag as a [THttpFunctionResult].
 Future<THttpFunctionResult> callSendMessageFunction({
   required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,

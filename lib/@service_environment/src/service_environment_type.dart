@@ -8,9 +8,17 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
+/// Represents the service environment in which the app runs in.
 enum ServiceEnvironmentType {
+  /// Development environment.
   DEV,
+
+  /// Testing environment.
   TEST,
+
+  /// Staging/pre-production environment.
   STAGING,
+
+  /// Production environment.
   PROD,
 }
