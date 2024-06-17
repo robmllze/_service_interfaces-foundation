@@ -12,20 +12,20 @@ import '/@service_environment/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-/// Represents the service environment of the app, encapsulating all necessary
-/// service brokers.
-/// 
-/// This setup centralizes backend service interactionn required by the app,
-/// enhancing modularity and facilitating environment-specific configurations.
-/// It is designed to be backend-agnostic, allowing the app to integrate
-/// seamlessly with different types of services without dependency on specific
-/// implementations. This class acts as a container for various service
-/// interfaces such as authentication, database operations, file management,
-/// and more, each defined by specific generic parameters.
-/// 
-/// By managing these services centrally, this class simplifies the
-/// architectural complexity and boosts the scalability and maintainability of
-/// the application.
+/// Represents the service environment of an application, serving as a central
+/// hub for interacting with essential services like authentication, database
+/// operations, file management, cloud functions, and notifications.
+///
+/// This class simplifies application architecture by centralizing service
+/// management, enhancing modularity, scalability, and maintainability. It
+/// provides a unified interface for service interactions, ensuring consistency
+/// and efficiency across different application components, and reducing
+/// inter-dependencies.
+///
+/// The design enables interchangeability of service providers(e.g., Firebase,
+/// AWS, Azure) with minimal impact on the application, facilitating easy
+/// adaptation to different backends and ensuring each variant remains
+/// optimized for its ecosystem.
 class ServiceEnvironment<
     TAuthServiceInterface extends AuthServiceInterface,
     TDatabaseServiceInterface extends DatabaseServiceInterface,

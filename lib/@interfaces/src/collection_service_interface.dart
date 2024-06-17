@@ -14,7 +14,12 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class CollectionServiceInterface<TModel extends Model>
+/// Provides a service interface for streaming and transforming data from a
+/// collection into an iterable of specified model types.
+///
+/// Extend this interface to customize the fetching, sorting, and conversion of
+/// collection data, tailored to different model types.
+abstract base class CollectionServiceInterface<TModel extends Model>
     extends DataServiceInterface<Iterable<TModel>> {
   //
   //

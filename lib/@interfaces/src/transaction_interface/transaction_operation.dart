@@ -8,26 +8,27 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //.title~
 
-//import '/_common.dart';
+import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-/// Defines the core functionalities of a generic AI service.
-///
-/// This interface ensures that any AI system implementation adheres to the
-/// specified base methods and behaviors necessary for AI interactions within
-/// the application.
-/// 
-/// It is designed to be backend-agnostic, enabling integration with various AI
-/// systems without altering the interface's fundamental operations.
-///
-/// This flexibility ensures that the application can interact with different
-/// AI backends while maintaining consistent AI functionalities across various
-/// implementations.
-abstract base class GenAIServiceInterface {
+/// Represents a database transaction operation.
+abstract base class TransactionOperation<TReference> {
   //
   //
   //
 
-  const GenAIServiceInterface();
+  final DataRef ref;
+
+  //
+  //
+  //
+
+  const TransactionOperation(this.ref);
+
+  //
+  //
+  //
+
+  Future<dynamic> execute(TReference reference);
 }

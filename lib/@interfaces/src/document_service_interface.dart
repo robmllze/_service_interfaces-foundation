@@ -14,7 +14,12 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class DocumentServiceInterface<TModel extends Model>
+/// Provides a service interface for streaming and transforming document data
+/// into a specified model type.
+///
+/// Extend this interface to customize the fetching and conversion of document
+/// data, tailored to different model types.
+abstract base class DocumentServiceInterface<TModel extends Model>
     extends DataServiceInterface<TModel?> {
   //
   //

@@ -12,6 +12,7 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
+// TODO: Write ...
 class NotificationTopic1 extends Equatable {
   //
   //

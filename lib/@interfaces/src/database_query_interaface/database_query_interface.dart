@@ -12,7 +12,19 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class DatabaseQueryInterface {
+/// Defines the core functionalities of a database querying service.
+///
+/// This interface ensures that any implementation of the database querying
+/// system adheres to the specified methods and behaviors necessary for
+/// executing and managing database queries.
+///
+/// It is designed to be backend-agnostic, allowing for integration with various
+/// database system without altering the interface's fundamental operations.
+///
+/// This flexibility ensures that the application can interact with different
+/// database backends, while maintaining consistent query execution and data
+/// manipulation methods across various implementations.
+abstract base class DatabaseQueryInterface {
   //
   //
   //

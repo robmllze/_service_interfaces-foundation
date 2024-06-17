@@ -12,7 +12,8 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class FieldValueInterface {
+@visibleForTesting
+abstract base class FieldValueInterface {
   //
   //
   //

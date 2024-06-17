@@ -16,7 +16,19 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class FileServiceInterface {
+/// Defines the core functionalities of a file service.
+///
+/// This interface ensures that any file system implementation adheres to the
+/// specified methods and behaviors necessary for file management and
+/// operations.
+/// 
+/// It is designed to be backend-agnostic, allowing for integration with various
+/// file storage systems without altering the interface's fundamental operations.
+///
+/// This flexibility ensures that the application can interact with different
+/// file storage backends while maintaining consistent file access, upload, and
+/// management methods across various implementations.
+abstract base class FileServiceInterface {
   //
   //
   //
@@ -39,10 +51,7 @@ abstract class FileServiceInterface {
   //
   //
 
-  ({
-    ModelFileEntry pendingUploadFile,
-    Future<ModelFileEntry> uploadedFile,
-  }) uploadFile({
+  TFileUploadResult uploadFile({
     required PlatformFile file,
     required String currentUserPid,
     List<String> definitionPath = FileSchema.FILES,
@@ -54,10 +63,7 @@ abstract class FileServiceInterface {
   //
   //
 
-  ({
-    ModelFileEntry pendingUploadFile,
-    Future<ModelFileEntry> uploadedFile,
-  }) uploadPublicFile({
+  TFileUploadResult uploadPublicFile({
     required PlatformFile file,
     required DataRef pubRef,
     required String? fileId,
@@ -78,3 +84,10 @@ abstract class FileServiceInterface {
     required String fileId,
   });
 }
+
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+typedef TFileUploadResult = ({
+  ModelFileEntry pendingUploadFile,
+  Future<ModelFileEntry> uploadedFile,
+});

@@ -13,16 +13,17 @@ import '/@interfaces/_common.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 /// Defines the core functionalities of a database service.
-/// 
+///
 /// This interface ensures that any database system implementation adheres to
 /// the specified methods and behaviors necessary to interact with the database.
+///
 /// It is designed to be backend-agnostic, allowing for integration with various
 /// database systems without altering the interface's fundamental operations.
-/// 
+///
 /// This flexibility ensures that the application can interact with different
 /// database backends while maintaining consistent data access and manipulation
 /// methods across various implementations.
-abstract class DatabaseServiceInterface {
+abstract base class DatabaseServiceInterface {
   //
   //
   //

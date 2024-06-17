@@ -15,7 +15,20 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class FunctionsServiceInterface {
+/// Defines the core functionalities of a cloud functions service.
+///
+/// This interface ensures that any cloud functions system implementation
+/// adheres to the specified methods and behaviors necessary for executing
+/// server-side logic.
+/// 
+/// It is designed to be backend-agnostic, allowing for integration with various
+/// cloud function providers without altering the interface's fundamental
+/// operations.
+///
+/// This flexibility ensures that the application can interact with different
+/// cloud function backends while maintaining consistent execution, management,
+/// and monitoring of server-side functions across various implementations.
+abstract base class FunctionsServiceInterface {
   //
   //
   //

@@ -14,7 +14,13 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class DataServiceInterface<T> {
+/// Provides a generic interface for streaming data services.
+///
+/// Extend this class to define specific data streaming and processing behaviors
+/// based on type `T`.
+///
+/// See [DocumentServiceInterface] and [CollectionServiceInterface] as examples.
+abstract base class DataServiceInterface<T> {
   //
   //
   //
@@ -60,11 +66,10 @@ abstract class DataServiceInterface<T> {
   /// The immediate value of [pValue].
   T? get snapshot => this.pValue.value;
 
-  /// Override this method to specify where to stream data from.
+  /// Specifies where to stream data from.
   DataRef databaseRef();
 
-  /// Override this method to specify how to convert the raw data from
-  /// the database into a usable object.
+  /// Specifies how to convert the raw data from the database into a usable object.
   dynamic fromJsonOrNull(Map<String, dynamic>? data) => throw UnimplementedError();
 
   /// Restarts the service by streaming data from the database. Only
@@ -85,11 +90,10 @@ abstract class DataServiceInterface<T> {
     await completer.future;
   }
 
-  /// Override this method to specify what to do with the data streamed from
-  /// the database.
+  /// Specifies what to do with the data streamed from the database.
   void onData(T data) {}
 
-  /// Override this method to specify how to stream data from the database.
+  /// Specifies how to stream data from the database.
   Stream<T> stream([int? limit]);
 
   /// Cancels the subscription to the stream and sets the value of [pValue] back

@@ -13,9 +13,6 @@ import '/@interfaces/_common.dart';
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 /// Represents a database batch operation.
-///
-/// Batch operations allow for multiple operations to be performed in a single
-/// request to the database service.
 base class BatchOperation<TModel extends Model> extends Equatable {
   //
   //

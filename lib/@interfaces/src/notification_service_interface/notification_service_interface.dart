@@ -12,7 +12,19 @@ import '/@interfaces/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-abstract class NotificationServiceInterface {
+/// Defines the core functionalities of a notification service.
+///
+/// This interface ensures that any notification system implementation adheres to the
+/// specified methods and behaviors necessary for managing and dispatching notifications
+/// within the application.
+///
+/// It is designed to be backend-agnostic, enabling integration with various
+/// notification systems without altering the interface's fundamental operations.
+///
+/// This flexibility ensures that the application can interact with different
+/// notification backends while maintaining consistent notification
+/// functionalities across various implementations.
+abstract base class NotificationServiceInterface {
   //
   //
   //
@@ -46,8 +58,8 @@ abstract class NotificationServiceInterface {
   //
   //
 
-  /// Override this method to execute custom actions when a device is registered.
-  /// Use [registration] to access registration details.
+  /// Executes custom actions when a device is registered. Use [registration] to
+  /// access registration details.
   void onRegisterDevice(ModelDeviceRegistration registration);
 
   //
