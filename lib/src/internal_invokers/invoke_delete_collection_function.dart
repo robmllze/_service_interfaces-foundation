@@ -12,7 +12,7 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-/// Calls the `delete_collection` function.
+/// Invokes the `delete_collection` function.
 ///
 /// - [functionsBroker] The functions broker to use.
 /// - [authServiceBroker] The authentication broker to use to verify access.
@@ -23,7 +23,7 @@ import '/_common.dart';
 /// **Notes:**
 ///
 /// - This assumes that the function is deployed.
-Future<THttpFunctionResult> callDeleteCollectionFunction({
+Future<THttpFunctionResult> invokeDeleteCollectionFunction({
   required FunctionsServiceInterface functionsBroker,
   required AuthServiceInterface authServiceBroker,
   required String collectionPath,

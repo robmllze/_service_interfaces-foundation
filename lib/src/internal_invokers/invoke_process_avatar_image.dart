@@ -12,7 +12,7 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-/// Calls the `process_avatar_image` function.
+/// Invoke the `process_avatar_image` function.
 ///
 /// - [functionsBroker] - The functions broker to use.
 /// - [authServiceBroker] -The authentication broker to use to verify access.
@@ -25,7 +25,7 @@ import '/_common.dart';
 /// **Notes:**
 ///
 /// - This assumes that the function is deployed.
-Future<THttpFunctionResult> callProcessAvatarImage({
+Future<THttpFunctionResult> invokeProcessAvatarImageFunction({
   required FunctionsServiceInterface functionsBroker,
   required AuthServiceInterface authServiceBroker,
   required dynamic imageUrl,
@@ -58,9 +58,10 @@ Future<THttpFunctionResult> callProcessAvatarImage({
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 /// Extracts the processed image bytes from the value returned from
-/// [callProcessAvatarImage].
+/// [invokeProcessAvatarImageFunction].
 ///
-/// - [callProcessAvatarImageResult] The value returned from [callProcessAvatarImage].
+/// - [callProcessAvatarImageResult] The value returned from
+/// [invokeProcessAvatarImageFunction].
 ///
 /// Returns the processed image bytes as a [Uint8List] or `null` if the image
 /// could not be processed.

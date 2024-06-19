@@ -12,24 +12,24 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-/// Calls the `delete_docment` function.
+/// Invoke the `send_message` function.
 ///
-/// - [functionsBroker] The functions broker to use.
+/// - [functionsInterface] The functions broker to use.
 /// - [authServiceBroker] The authentication broker to use to verify access.
-/// - [documentPath] The path to the document to delete.
+/// - [senderPid] The sender's PID.
+/// - [relationshipId] The ID of the relationship to send the message to.
+/// - [message] The message to send.
 ///
 /// Returns the response and a success flag as a [THttpFunctionResult].
-///
-/// **Notes:**
-///
-/// - This assumes that the function is deployed.
-Future<THttpFunctionResult> callDeleteDocumentFunction({
-  required FunctionsServiceInterface functionsBroker,
+Future<THttpFunctionResult> invokeSendMessageFunction({
+  required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,
-  required String documentPath,
+  required String senderPid,
+  required String relationshipId,
+  required String message,
 }) async {
   final idToken = await authServiceBroker.getIdToken();
-  final url = functionsBroker.functionsEndpointUrl('delete_docment');
+  final url = functionsInterface.functionsEndpointUrl('send_message');
   final response = await post(
     url,
     headers: {
@@ -37,7 +37,9 @@ Future<THttpFunctionResult> callDeleteDocumentFunction({
       'Authorization': 'Bearer $idToken',
     },
     body: jsonEncode({
-      'document_path': documentPath,
+      'sender_pid': senderPid,
+      'relationship_id': relationshipId,
+      'message': message,
     }),
   );
 

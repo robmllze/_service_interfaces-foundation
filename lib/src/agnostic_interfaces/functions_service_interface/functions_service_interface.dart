@@ -17,7 +17,7 @@ import '/_common.dart';
 /// This interface ensures that any cloud functions system implementation
 /// adheres to the specified methods and behaviors necessary for executing
 /// server-side logic.
-/// 
+///
 /// It is designed to be backend-agnostic, allowing for integration with various
 /// cloud function providers without altering the interface's fundamental
 /// operations.
@@ -58,7 +58,7 @@ abstract base class FunctionsServiceInterface {
     required String jobId,
     required String jobPid,
   }) async {
-    final result = await callDeleteJobFunction(
+    final result = await invokeDeleteJobFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,
       jobId: jobId,
@@ -74,7 +74,7 @@ abstract base class FunctionsServiceInterface {
   Future<bool> deleteDocument({
     required String documentPath,
   }) async {
-    final result = await callDeleteDocumentFunction(
+    final result = await invokeDeleteDocumentFunction(
       functionsBroker: this,
       authServiceBroker: authServiceBroker,
       documentPath: documentPath,
@@ -89,7 +89,7 @@ abstract base class FunctionsServiceInterface {
   Future<bool> deleteCollection({
     required String collectionPath,
   }) async {
-    final result = await callDeleteCollectionFunction(
+    final result = await invokeDeleteCollectionFunction(
       functionsBroker: this,
       authServiceBroker: authServiceBroker,
       collectionPath: collectionPath,
@@ -106,7 +106,7 @@ abstract base class FunctionsServiceInterface {
     required String body,
     required Set<String> destinationTokens,
   }) async {
-    final result = await callSendNotificationsFunction(
+    final result = await invokeSendNotificationsFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,
       title: title,
@@ -128,7 +128,7 @@ abstract base class FunctionsServiceInterface {
     required String templateId,
     required Map dynamicTemplateData,
   }) async {
-    final result = await callSendEmailsFunction(
+    final result = await invokeSendEmailsFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,
       apiKey: apiKey,
@@ -149,7 +149,7 @@ abstract base class FunctionsServiceInterface {
     required dynamic imageUrl,
   }) async {
     try {
-      final result = await callProcessAvatarImage(
+      final result = await invokeProcessAvatarImageFunction(
         functionsBroker: this,
         authServiceBroker: authServiceBroker,
         imageUrl: imageUrl!.toString(),
@@ -169,7 +169,7 @@ abstract base class FunctionsServiceInterface {
     required String relationshipId,
     required String message,
   }) async {
-    final result = await callSendMessageFunction(
+    final result = await invokeSendMessageFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,
       senderPid: senderPid,
