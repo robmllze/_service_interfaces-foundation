@@ -9,6 +9,7 @@
 
 export 'agnostic_interfaces/auth_service_interface/auth_service_exceptions.dart';
 export 'agnostic_interfaces/auth_service_interface/auth_service_interface.dart';
+export 'agnostic_interfaces/auth_service_interface/auth_service_persistence.dart';
 export 'agnostic_interfaces/collection_service_interface.dart';
 export 'agnostic_interfaces/data_service_interface.dart';
 export 'agnostic_interfaces/database_query_interaface/database_query_interface.dart';
