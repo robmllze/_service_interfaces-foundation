@@ -25,9 +25,9 @@ dependencies:
   _data:
     path: ../_data
 
-  xyz_gen_annotations: ^0.47.0
+  xyz_gen_annotations: ^0.48.0
   xyz_pod: ^0.36.0
-  xyz_utils: ^0.57.1
+  xyz_utils: ^0.60.0
 
   equatable: any
   http: any
