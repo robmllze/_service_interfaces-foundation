@@ -168,6 +168,7 @@ abstract base class FunctionsServiceInterface {
     required String senderPid,
     required String relationshipId,
     required String message,
+    String? eventId,
   }) async {
     final result = await invokeSendMessageFunction(
       functionsInterface: this,
@@ -175,6 +176,7 @@ abstract base class FunctionsServiceInterface {
       senderPid: senderPid,
       relationshipId: relationshipId,
       message: message,
+      eventId: eventId,
     );
     return result.success;
   }

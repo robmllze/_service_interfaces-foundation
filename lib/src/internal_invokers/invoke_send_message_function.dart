@@ -19,6 +19,7 @@ import '/_common.dart';
 /// - [senderPid] The sender's PID.
 /// - [relationshipId] The ID of the relationship to send the message to.
 /// - [message] The message to send.
+/// - [eventId] The event ID for the message.
 ///
 /// Returns the response and a success flag as a [THttpFunctionResult].
 Future<THttpFunctionResult> invokeSendMessageFunction({
@@ -27,6 +28,7 @@ Future<THttpFunctionResult> invokeSendMessageFunction({
   required String senderPid,
   required String relationshipId,
   required String message,
+  String? eventId,
 }) async {
   final idToken = await authServiceBroker.getIdToken();
   final url = functionsInterface.functionsEndpointUrl('send_message');
@@ -40,6 +42,7 @@ Future<THttpFunctionResult> invokeSendMessageFunction({
       'sender_pid': senderPid,
       'relationship_id': relationshipId,
       'message': message,
+      'event_id': eventId,
     }),
   );
 
