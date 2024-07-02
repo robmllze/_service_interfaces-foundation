@@ -12,11 +12,11 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-/// Invokes the `delete_collection` function.
+/// Invokes the `deleteCollection` function.
 ///
 /// - [functionsBroker] The functions broker to use.
 /// - [authServiceBroker] The authentication broker to use to verify access.
-/// - [collectionPath] The path to the collection to delete.
+/// - [path] The path to the collection to delete.
 ///
 /// Returns the response and a success flag as a [THttpFunctionResult].
 ///
@@ -26,10 +26,10 @@ import '/_common.dart';
 Future<THttpFunctionResult> invokeDeleteCollectionFunction({
   required FunctionsServiceInterface functionsBroker,
   required AuthServiceInterface authServiceBroker,
-  required String collectionPath,
+  required String path,
 }) async {
   final idToken = await authServiceBroker.getIdToken();
-  final url = functionsBroker.functionsEndpointUrl('delete_collection');
+  final url = functionsBroker.functionsEndpointUrl('deleteCollection');
   final response = await post(
     url,
     headers: {
@@ -37,7 +37,7 @@ Future<THttpFunctionResult> invokeDeleteCollectionFunction({
       'Authorization': 'Bearer $idToken',
     },
     body: jsonEncode({
-      'collection_path': collectionPath,
+      'path': path,
     }),
   );
 

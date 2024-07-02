@@ -71,13 +71,13 @@ abstract base class FunctionsServiceInterface {
   //
   //
 
-  Future<bool> deleteDocument({
-    required String documentPath,
+  Future<bool> deleteModel({
+    required Model model,
   }) async {
-    final result = await invokeDeleteDocumentFunction(
+    final result = await invokeDeleteModelsFunction(
       functionsBroker: this,
       authServiceBroker: authServiceBroker,
-      documentPath: documentPath,
+      model: model,
     );
     return result.success;
   }
@@ -87,12 +87,12 @@ abstract base class FunctionsServiceInterface {
   //
 
   Future<bool> deleteCollection({
-    required String collectionPath,
+    required String path,
   }) async {
     final result = await invokeDeleteCollectionFunction(
       functionsBroker: this,
       authServiceBroker: authServiceBroker,
-      collectionPath: collectionPath,
+      path: path,
     );
     return result.success;
   }
@@ -101,12 +101,12 @@ abstract base class FunctionsServiceInterface {
   //
   //
 
-  Future<bool> sendNotifications({
+  Future<bool> sendDataNotifications({
     required String title,
     required String body,
     required Set<String> destinationTokens,
   }) async {
-    final result = await invokeSendNotificationsFunction(
+    final result = await invokeSendDataNotificationsFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,
       title: title,
@@ -124,7 +124,7 @@ abstract base class FunctionsServiceInterface {
     required String apiKey,
     required String fromEmail,
     required String fromName,
-    required List<String> toEmails,
+    required List<String> to,
     required String templateId,
     required Map dynamicTemplateData,
   }) async {
@@ -134,7 +134,7 @@ abstract base class FunctionsServiceInterface {
       apiKey: apiKey,
       fromEmail: fromEmail,
       fromName: fromName,
-      toEmails: toEmails,
+      to: to,
       templateId: templateId,
       dynamicTemplateData: dynamicTemplateData,
     );
@@ -165,18 +165,18 @@ abstract base class FunctionsServiceInterface {
   //
 
   Future<bool> sendMessage({
-    required String senderPid,
     required String relationshipId,
+    required String senderPid,
+    String? newEventId,
     required String message,
-    String? eventId,
   }) async {
     final result = await invokeSendMessageFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,
-      senderPid: senderPid,
       relationshipId: relationshipId,
+      senderPid: senderPid,
+      newEventId: newEventId,
       message: message,
-      eventId: eventId,
     );
     return result.success;
   }

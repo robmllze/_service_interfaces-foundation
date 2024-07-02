@@ -32,9 +32,8 @@ Future<THttpFunctionResult> invokeProcessAvatarImageFunction({
   int cropWidth = 64,
   int cropHeight = 64,
 }) async {
-  final imageUrl1 = imageUrl!.toString();
   final idToken = await authServiceBroker.getIdToken();
-  final url = functionsBroker.functionsEndpointUrl('process_avatar_image');
+  final url = functionsBroker.functionsEndpointUrl('processAvatarImage');
   final response = await post(
     url,
     headers: {
@@ -42,9 +41,9 @@ Future<THttpFunctionResult> invokeProcessAvatarImageFunction({
       'Authorization': 'Bearer $idToken',
     },
     body: jsonEncode({
-      'image_url': imageUrl1,
-      'crop_width': cropWidth,
-      'crop_height': cropHeight,
+      'imageUrl': imageUrl!.toString(),
+      'cropWidth': cropWidth,
+      'cropHeight': cropHeight,
     }),
   );
 

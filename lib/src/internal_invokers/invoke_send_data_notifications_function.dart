@@ -26,7 +26,7 @@ import '/_common.dart';
 /// **Notes:**
 ///
 /// - This assumes that the function is deployed.
-Future<THttpFunctionResult> invokeSendNotificationsFunction({
+Future<THttpFunctionResult> invokeSendDataNotificationsFunction({
   required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,
   required String title,
@@ -38,7 +38,7 @@ Future<THttpFunctionResult> invokeSendNotificationsFunction({
     'destinationTokens must not be empty',
   );
   final idToken = await authServiceBroker.getIdToken();
-  final url = functionsInterface.functionsEndpointUrl('send_notifications');
+  final url = functionsInterface.functionsEndpointUrl('sendDataNotifications');
   final response = await post(
     url,
     headers: {

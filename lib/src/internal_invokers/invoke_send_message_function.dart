@@ -16,22 +16,23 @@ import '/_common.dart';
 ///
 /// - [functionsInterface] The functions broker to use.
 /// - [authServiceBroker] The authentication broker to use to verify access.
-/// - [senderPid] The sender's PID.
 /// - [relationshipId] The ID of the relationship to send the message to.
+/// - [newEventId] An optional event ID for the message. Otherwise one will
+/// be generated.
+/// - [senderPid] The sender's PID.
 /// - [message] The message to send.
-/// - [eventId] The event ID for the message.
 ///
 /// Returns the response and a success flag as a [THttpFunctionResult].
 Future<THttpFunctionResult> invokeSendMessageFunction({
   required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,
-  required String senderPid,
   required String relationshipId,
+  String? newEventId,
+  required String senderPid,
   required String message,
-  String? eventId,
 }) async {
   final idToken = await authServiceBroker.getIdToken();
-  final url = functionsInterface.functionsEndpointUrl('send_message');
+  final url = functionsInterface.functionsEndpointUrl('sendMessage');
   final response = await post(
     url,
     headers: {
@@ -39,10 +40,10 @@ Future<THttpFunctionResult> invokeSendMessageFunction({
       'Authorization': 'Bearer $idToken',
     },
     body: jsonEncode({
-      'sender_pid': senderPid,
-      'relationship_id': relationshipId,
+      'relationshipId': relationshipId,
+      if (newEventId != null) 'newEventId': newEventId,
+      'senderPid': senderPid,
       'message': message,
-      'event_id': eventId,
     }),
   );
 
