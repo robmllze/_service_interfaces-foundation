@@ -109,7 +109,6 @@ abstract base class FunctionsServiceInterface {
   //
 
   Future<bool> deleteJob({
-    required String jobId,
     required String jobPid,
   }) async {
     final result = await invokeDeleteJobFunction(

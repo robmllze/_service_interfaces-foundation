@@ -12,7 +12,7 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-/// Invokes the `updateJob` function.
+/// Invokes the `updateJobPub` function.
 ///
 /// - [functionsInterface] The functions broker to use.
 /// - [authServiceBroker] The authentication broker to use to verify access.
@@ -29,7 +29,7 @@ Future<THttpFunctionResult> invokeUpdateJobPubFunction({
   required ModelJobPub jobPub,
 }) async {
   final idToken = await authServiceBroker.getIdToken();
-  final url = functionsInterface.functionsEndpointUrl('updateJob');
+  final url = functionsInterface.functionsEndpointUrl('updateJobPub');
   final response = await post(
     url,
     headers: {
