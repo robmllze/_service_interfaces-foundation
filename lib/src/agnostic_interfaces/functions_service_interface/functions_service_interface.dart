@@ -75,6 +75,39 @@ abstract base class FunctionsServiceInterface {
   //
   //
 
+  Future<ModelJobPub?> readJobPub({
+    required String jobPid,
+  }) async {
+    final result = await invokeReadJobPubFunction(
+      functionsInterface: this,
+      authServiceBroker: authServiceBroker,
+      jobPid: jobPid,
+    );
+    final jobPub = ModelJobPub.fromJsonStringOrNull(
+      result.response?.body,
+    );
+    return jobPub;
+  }
+
+  //
+  //
+  //
+
+  Future<bool> updateJobPub({
+    required ModelJobPub jobPub,
+  }) async {
+    final result = await invokeUpdateJobPubFunction(
+      functionsInterface: this,
+      authServiceBroker: authServiceBroker,
+      jobPub: jobPub,
+    );
+    return result.success;
+  }
+
+  //
+  //
+  //
+
   Future<bool> deleteJob({
     required String jobId,
     required String jobPid,
