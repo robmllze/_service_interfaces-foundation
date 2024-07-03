@@ -12,24 +12,30 @@ import '/_common.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-/// Invokes the `deleteJob` function.
+/// Invokes the `createJob` function.
 ///
 /// - [functionsInterface] The functions broker to use.
 /// - [authServiceBroker] The authentication broker to use to verify access.
-/// - [jobPid] The PID of the job to delete.
+/// - [userId] The creator ID.
+/// - [projectPid] The PID of the project to create the job in.
+/// - [displayName] The display name of the job.
+/// - [description] The description of the job.
 ///
 /// Returns the response and a success flag as a [THttpFunctionResult].
 ///
 /// **Notes:**
 ///
 /// - This assumes that the function is deployed.
-Future<THttpFunctionResult> invokeDeleteJobFunction({
+Future<THttpFunctionResult> invokeCreateJobFunction({
   required FunctionsServiceInterface functionsInterface,
   required AuthServiceInterface authServiceBroker,
-  required String jobPid,
+  required String userId,
+  required String projectPid,
+  required String displayName,
+  required String description,
 }) async {
   final idToken = await authServiceBroker.getIdToken();
-  final url = functionsInterface.functionsEndpointUrl('deleteJob');
+  final url = functionsInterface.functionsEndpointUrl('createJob');
   final response = await post(
     url,
     headers: {
@@ -37,7 +43,10 @@ Future<THttpFunctionResult> invokeDeleteJobFunction({
       'Authorization': 'Bearer $idToken',
     },
     body: jsonEncode({
-      'jobPid': jobPid,
+      'userId': userId,
+      'projectPid': projectPid,
+      'displayName': displayName,
+      'description': description,
     }),
   );
   if (response.statusCode == 200) {

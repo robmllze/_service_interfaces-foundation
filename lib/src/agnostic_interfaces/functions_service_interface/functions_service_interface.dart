@@ -54,6 +54,27 @@ abstract base class FunctionsServiceInterface {
   //
   //
 
+  Future<bool> createJob({
+    required String userId,
+    required String projectPid,
+    required String displayName,
+    required String description,
+  }) async {
+    final result = await invokeCreateJobFunction(
+      functionsInterface: this,
+      authServiceBroker: authServiceBroker,
+      userId: userId,
+      projectPid: projectPid,
+      displayName: displayName,
+      description: description,
+    );
+    return result.success;
+  }
+
+  //
+  //
+  //
+
   Future<bool> deleteJob({
     required String jobId,
     required String jobPid,
@@ -61,7 +82,6 @@ abstract base class FunctionsServiceInterface {
     final result = await invokeDeleteJobFunction(
       functionsInterface: this,
       authServiceBroker: authServiceBroker,
-      jobId: jobId,
       jobPid: jobPid,
     );
     return result.success;

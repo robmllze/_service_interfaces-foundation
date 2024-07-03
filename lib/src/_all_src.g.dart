@@ -40,5 +40,6 @@ export 'internal_invokers/invoke_send_emails_function.dart';
 export 'internal_invokers/invoke_send_message_function.dart';
 export 'internal_invokers/invoke_send_data_notifications_function.dart';
 export 'internal_invokers/job_crud/invoke_delete_job_function.dart';
+export 'internal_invokers/job_crud/invoke_create_job_function.dart';
 export 'service_environment/service_environment.dart';
 export 'service_environment/service_environment_type.dart';
