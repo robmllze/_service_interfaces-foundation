@@ -43,5 +43,5 @@ export 'internal_invokers/job_crud/invoke_create_job_function.dart';
 export 'internal_invokers/job_crud/invoke_delete_job_function.dart';
 export 'internal_invokers/job_crud/invoke_read_job_pub_function.dart';
 export 'internal_invokers/job_crud/invoke_update_job_pub_function.dart';
-export 'service_environment/service_environment_type.dart';
 export 'service_environment/service_environment.dart';
+export 'service_environment/service_environment_type.dart';
