@@ -81,7 +81,7 @@ abstract base class DataServiceInterface<T> {
     this.subscription = this.stream(this._setLimit(limit)).listen((e) async {
       await this.pValue.podOrNull!.set(e);
       this.onData(e);
-      if (completer.isCompleted == false) {
+      if (!completer.isCompleted) {
         completer.complete(e);
       }
     });

@@ -65,7 +65,7 @@ abstract base class DatabaseQueryInterface {
 
   Stream<Iterable<ModelRelationship>> streamRelationshipsForAnyMember({
     required Iterable<String> memberPids,
-    Iterable<RelationshipDefType> defTypes = const {},
+    Iterable<RelationshipType> types = const {},
     int? limit,
   });
 
@@ -75,7 +75,7 @@ abstract base class DatabaseQueryInterface {
 
   Stream<Iterable<ModelRelationship>> streamRelationshipsForEveryMember({
     required Iterable<String> memberPids,
-    Iterable<RelationshipDefType> defTypes = const {},
+    Iterable<RelationshipType> types = const {},
     int? limit,
   });
 
