@@ -159,7 +159,7 @@ abstract base class DatabaseServiceInterface {
   /// Performs a series of batch operations on the database.
   ///
   /// - `operations`: A list of batch operations to execute.
-  Future<Iterable<TModel?>> runBatchOperations<TModel extends Model>(
-    Iterable<BatchOperation<TModel>> operations,
+  Future<Iterable<Model?>> runBatchOperations(
+    Iterable<BatchOperation<Model>> operations,
   );
 }
