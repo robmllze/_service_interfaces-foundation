@@ -48,7 +48,7 @@ Future<THttpFunctionResult> invokeSendDataNotificationsFunction({
     body: jsonEncode({
       'title': title,
       'body': body,
-      'destination_tokens': destinationTokens.toList(),
+      'destinationTokens': destinationTokens.toList(),
     }),
   );
 
