@@ -79,7 +79,7 @@ abstract base class DataServiceInterface<T> {
     final completer = Completer<T>();
     this.cancelSubscription();
     this.subscription = this.stream(this._setLimit(limit)).listen((e) async {
-      await this.pValue.podOrNull!.set(e);
+      await  Pod.cast(this.pValue).set(e);
       this.onData(e);
       if (!completer.isCompleted) {
         completer.complete(e);
