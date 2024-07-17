@@ -26,17 +26,3 @@ final class ReadOperation<TModel extends Model> extends BatchOperation<TModel> {
           delete: false,
         );
 }
-
-// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-
-final class ReadDataOperation extends ReadOperation<DataModel> {
-  ReadDataOperation({
-    required DataRef dataRef,
-  }) : super(
-          model: DataModel(
-            data: {
-              Model.K_REF: dataRef.toJson(),
-            },
-          ),
-        );
-}

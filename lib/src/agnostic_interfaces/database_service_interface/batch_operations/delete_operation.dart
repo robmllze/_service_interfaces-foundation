@@ -29,14 +29,13 @@ final class DeleteOperation<TModel extends Model> extends BatchOperation<TModel>
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-final class DeleteDataOperation extends DeleteOperation<DataModel> {
+final class DeleteDataOperation extends DeleteOperation<Model> {
   DeleteDataOperation({
     required DataRef dataRef,
   }) : super(
-          model: DataModel(
-            data: {
-              Model.K_REF: dataRef.toJson(),
-            },
-          ),
+          model: Model({
+            'ref': dataRef
+                .toJson(), // TODO: Do not use raw strings like 'ref', prefer Model.K_REF or similar.
+          }),
         );
 }

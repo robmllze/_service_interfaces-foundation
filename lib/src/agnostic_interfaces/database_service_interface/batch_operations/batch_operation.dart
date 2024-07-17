@@ -40,20 +40,6 @@ base class BatchOperation<TModel extends Model> extends Equatable {
   //
   //
 
-  BatchOperation<DataModel> toGeneric() {
-    return BatchOperation<DataModel>(
-      model: DataModel(data: this.model?.toJson()),
-      create: create,
-      read: read,
-      update: update,
-      delete: delete,
-    );
-  }
-
-  //
-  //
-  //
-
   BatchOperation<TModel> copyWith({
     TModel? model,
     bool? create,
