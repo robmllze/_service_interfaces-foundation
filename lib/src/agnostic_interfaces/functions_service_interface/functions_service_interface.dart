@@ -138,6 +138,25 @@ abstract base class FunctionsServiceInterface {
   //
   //
 
+  Future<String?> getPlacesSuggestions({
+    required String input,
+  }) async {
+    try {
+      final result = await invokeGetPlacesSuggestionsFunction(
+        functionsBroker: this,
+        authServiceBroker: authServiceBroker,
+        input: input,
+      );
+      final body = result.response?.body;
+      return body;
+    } catch (_) {}
+    return null;
+  }
+
+  //
+  //
+  //
+
   Future<bool> deleteCollection({
     required String path,
   }) async {
