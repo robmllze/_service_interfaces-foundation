@@ -203,6 +203,7 @@ abstract base class FunctionsServiceInterface {
     required String title,
     required String body,
     required Set<String> destinationTokens,
+    required FilteringInfo? filteringInfo,
   }) async {
     final result = await invokeSendDataNotificationsFunction(
       functionsInterface: this,
@@ -210,6 +211,7 @@ abstract base class FunctionsServiceInterface {
       title: title,
       body: body,
       destinationTokens: destinationTokens,
+      filteringInfo: filteringInfo,
     );
     return result.success;
   }

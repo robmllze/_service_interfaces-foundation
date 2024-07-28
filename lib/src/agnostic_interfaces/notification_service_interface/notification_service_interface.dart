@@ -39,6 +39,7 @@ abstract base class NotificationServiceInterface {
     required String title,
     required String body,
     required Set<String> destinationTokens,
+    required FilteringInfo? filteringInfo,
   });
 
   //
