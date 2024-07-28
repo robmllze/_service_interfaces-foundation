@@ -138,7 +138,7 @@ abstract base class FunctionsServiceInterface {
   //
   //
 
-  Future<String?> getPlacesSuggestions({
+  Future<GooglePlacesDataModel?> getPlacesSuggestions({
     required String input,
   }) async {
     try {
@@ -148,7 +148,34 @@ abstract base class FunctionsServiceInterface {
         input: input,
       );
       final body = result.response?.body;
-      return body;
+      if (body != null) {
+        final json = jsonDecode(body)['data'];
+        final model = GooglePlacesDataModel.fromJson(json);
+        return model;
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  //
+  //
+  //
+
+  Future<GooglePlaceDetailsDataModel?> getPlaceDetails({
+    required String placeId,
+  }) async {
+    try {
+      final result = await invokeGetPlaceDetailsFunction(
+        functionsBroker: this,
+        authServiceBroker: authServiceBroker,
+        placeId: placeId,
+      );
+      final body = result.response?.body;
+      if (body != null) {
+        final json = jsonDecode(body)['data'];
+        final model = GooglePlaceDetailsDataModel.fromJson(json);
+        return model;
+      }
     } catch (_) {}
     return null;
   }
