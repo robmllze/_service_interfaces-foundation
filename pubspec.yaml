@@ -25,9 +25,9 @@ dependencies:
   _data:
     path: ../_data
 
-  xyz_gen_annotations: ^0.49.0
-  xyz_pod: ^0.48.0
-  xyz_utils: ^0.62.0
+  xyz_gen_annotations: ^0.50.0
+  xyz_pod: ^0.49.0
+  xyz_utils: ^0.63.2
 
   equatable: any
   http: any
@@ -41,12 +41,12 @@ dependency_overrides:
   # TODO: Comment out these lines if you don't have these packages at their
   # respective paths. They are included for development purposes to allow
   # simultaneous work on this package and its dependencies.
-  xyz_gen_annotations:
-    path: ../../xyz_gen/xyz_gen_annotations
-  xyz_pod:
-    path: ../../xyz_pod
-  xyz_utils:
-    path: ../../xyz_utils
+  # xyz_gen_annotations:
+  #   path: ../../xyz_gen/xyz_gen_annotations
+  # xyz_pod:
+  #   path: ../../xyz_pod
+  # xyz_utils:
+  #   path: ../../xyz_utils
 
 ## -----------------------------------------------------------------------------
 
