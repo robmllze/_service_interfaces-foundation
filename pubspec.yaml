@@ -27,7 +27,6 @@ dependencies:
 
   xyz_gen_annotations: ^0.50.0
   xyz_pod: ^0.49.0
-  xyz_utils: ^0.63.2
 
   equatable: any
   http: any
